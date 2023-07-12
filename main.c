@@ -32,7 +32,7 @@ int main(int ac, char **av)
 	while (1)
 	{
 		_isatty();
-		nread = getline(&lineptr, &n, stdin);
+		nread = _getline(&lineptr, &n, stdin);
 		if (nread == -1)
 		{
 			perror("Error: ");
