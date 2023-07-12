@@ -33,11 +33,6 @@ int main(int ac, char **av)
 	{
 		_isatty();
 		nread = _getline(&lineptr, &n, stdin);
-		if (nread == -1)
-		{
-			perror("Error: ");
-			return (-1);
-		}
 		if (nread == EOF)
 			exit(1);
 
