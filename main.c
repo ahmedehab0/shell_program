@@ -5,7 +5,7 @@
 void _isatty()
 {
 	if (isatty(STDIN_FILENO))
-		printf("($) ");
+		_puts("($) ");
 }
 /**
  *sig_handler - handels the sigint (CTR - c) signal
@@ -13,7 +13,7 @@ void _isatty()
  */
 void sig_handler(int sig)
 {
-	puts("\n");
+	_puts("\n");
 }
 /**
  * main - simple shell program  
@@ -32,7 +32,7 @@ int main(int ac, char **av)
 	while (1)
 	{
 		_isatty();
-		nread = getline(&lineptr, &n, stdin);
+		nread = _getline(&lineptr, &n, stdin);
 		if (nread == -1)
 		{
 			perror("Error: ");
@@ -41,11 +41,10 @@ int main(int ac, char **av)
 		if (nread == EOF)
 			exit(1);
 
-			/**arg = string_parse(lineptr);
-			*execute(arg);
-			*/
+			arg = string_parse(lineptr);
+			execute(arg);
 	}
 	free(lineptr);
-	//free(arg);
+	free(arg);
 	return (0);
 }
