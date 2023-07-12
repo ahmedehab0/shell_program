@@ -14,15 +14,16 @@
 #include <sys/stat.h>
 
 /**
- *struct list_path- linked list containing path directries 
+ *struct list_path- linked list containing path directories
  *@dir - name of the directory
  *@node - pointer to the node 
  */
 typedef struct list_path
 {
 	char *dir;
-	struct list_path *node;
+	struct list_path *next_node;
 }list_path;
+
 /**
  *struct built_in - struct to the built in commands and the corresponding function  
  *@name - built in command 
@@ -34,12 +35,21 @@ typedef struct built_in
 	void (*func)(char **);
 }built_in;
 
-//-------------------<functions>---------------------
+/* -------------------<functions>--------------------- */
+
 void _isatty();
 void sig_handler(int sig);
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+ssize_t _getline(char **line_ptr, size_t *n, FILE *stream);
 char **string_parse(char *str);
 void execute(char **command);
 int _puts(char *str);
+void free_list(list_path *head);
 
+/* -------------------< functions in directories_list.c >--------------------- */
+
+extern char **environ;
+list_path *add_node_end(list_path **head, const char *str);
+char *_strdup(const char *str);
+void free_list(list_path *head);
+char *_getenv(const char *var_name);
 #endif
