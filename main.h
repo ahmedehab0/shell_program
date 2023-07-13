@@ -43,7 +43,6 @@ ssize_t _getline(char **line_ptr, size_t *n, FILE *stream);
 char **string_parse(char *str);
 void execute(char **command);
 int _puts(char *str);
-void free_list(list_path *head);
 
 /* -------------------< functions in directories_list.c >--------------------- */
 
@@ -51,5 +50,15 @@ extern char **environ;
 list_path *add_node_end(list_path **head, const char *str);
 char *_strdup(const char *str);
 void free_list(list_path *head);
+list_path *list_path_directory(void);
 char *_getenv(const char *var_name);
+
+/* -------------------< functions in execute.c >------------------------------- */
+char *_which(list_path *head, char *command);
+void (*built_in_handeler(char **builtin))(char **command);
+void _cd(char **command);
+void exitt(char **command);
+void _setenv(char **command);
+void _unsetenv(char **command);
+
 #endif
