@@ -13,7 +13,10 @@ void execute(char **command)
 	void (*check_build)(char **);
 
 	check_build = built_in_handeler(command);
-	if (!check_build)
+	if (check_build)
+		check_build(command);
+
+	else
 	{
 		head = list_path_directory();
 
