@@ -54,11 +54,15 @@ list_path *list_path_directory(void);
 char *_getenv(const char *var_name);
 
 /* -------------------< functions in execute.c >------------------------------- */
-char *_which(list_path *head, char *command);
+
 void (*built_in_handeler(char **builtin))(char **command);
 void _cd(char **command);
 void exitt(char **command);
 void _setenv(char **command);
 void _unsetenv(char **command);
 
+/* -------------------< functions in _which.c >------------------------------- */
+
+char *_which(char *file_name);
+char *str_concat(char *s1, char *s2);
 #endif
