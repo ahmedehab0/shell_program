@@ -6,8 +6,7 @@
 void execute(char **command)
 {
 	char *actual_command = command[0];
-	char *command_path;
-	list_path *head = NULL;
+	char *command_path = NULL;
 	pid_t child;
 	int status;
 	void (*check_build)(char **);
@@ -18,10 +17,8 @@ void execute(char **command)
 
 	else
 	{
-		head = list_path_directory();
-
 		//check if there is a path directory of the command
-		command_path = _which(head, actual_command);
+		command_path = _which(actual_command);
 		if (command_path)
 		{
 			free(actual_command);
@@ -45,9 +42,9 @@ void execute(char **command)
 		else
 			wait(&status);
 	}
-
+// not a malloc so not sure if free is correct
 		free(actual_command);
-		free_list(head);
+//		free_list(head);
 		free(command_path);
 }
 /**
@@ -73,5 +70,4 @@ void (*built_in_handeler(char **builtin))(char **command)
 			return (check_built[i].func);
 	}
 	return (0);
-
 }
