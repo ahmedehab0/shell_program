@@ -38,35 +38,6 @@ list_path *list_path_directory(void)
 }
 
 /**
- * _getenv - search for the environment string (filename)
- * @var_name: The name of the requested variable
- *
- * Return: the value of the var_name.
- */
-char *_getenv(const char *var_name)
-{
-	int i, j;
-	int is_equal;
-
-	for (i = 0; environ[i] != NULL; i++)
-	{
-		is_equal = 1;
-
-		for (j = 0; environ[i][j] != '='; j++)
-		{
-			if (var_name[j] != environ[i][j])
-			{
-				is_equal = 0;
-				break;
-			}
-		}
-		if (is_equal == 1)
-			return (&environ[i][j + 1]);
-	}
-	return (NULL);
-}
-
-/**
  * add_node_end - adds a new node at the end of a list_path list
  * @head: head to a linked list
  * @str: string element to store
@@ -151,4 +122,3 @@ void free_list(list_path *head)
 		free(current_node);
 	}
 }
-
