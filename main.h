@@ -58,6 +58,7 @@ char *_getenv(const char *var_name);
 void (*built_in_handeler(char **builtin))(char **command);
 void _cd(char **command);
 void exitt(char **command);
+char *_getenv(const char *var_name);
 void _setenv(char **command);
 void _unsetenv(char **command);
 

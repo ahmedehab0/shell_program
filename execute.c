@@ -53,6 +53,7 @@ void (*built_in_handeler(char **builtin))(char **command)
 	{
 		{"cd", _cd}, 
 		{"exit", exitt},
+		{"env", _getenv},
 		{"setenv", _setenv}, 
 		{"unsetenv", _unsetenv},
 		{NULL, NULL}
