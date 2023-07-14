@@ -43,6 +43,7 @@ ssize_t _getline(char **line_ptr, size_t *n, FILE *stream);
 char **string_parse(char *str);
 void execute(char **command);
 int _puts(char *str);
+void *_realloc(void *ptr, int new_size);
 
 /* -------------------< functions in directories_list.c >--------------------- */
 
