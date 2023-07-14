@@ -13,7 +13,7 @@ void _isatty()
  */
 void sig_handler(int sig)
 {
-	_puts("\n");
+	_puts("\n($) ");
 }
 /**
  * main - simple shell program  
