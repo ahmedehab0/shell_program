@@ -21,7 +21,6 @@ void execute(char **command)
 		command_path = _which(actual_command);
 		if (command_path)
 		{
-			free(actual_command);
 			actual_command = command_path;
 		}
 		child = fork();
@@ -42,10 +41,6 @@ void execute(char **command)
 		else
 			wait(&status);
 	}
-// not a malloc so not sure if free is correct
-		free(actual_command);
-//		free_list(head);
-		free(command_path);
 }
 /**
  *built_in_handler - dtermines whether the command is built in or not
