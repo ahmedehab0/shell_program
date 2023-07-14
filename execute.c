@@ -8,14 +8,10 @@ void execute(char **command)
 	char *actual_command = command[0];
 	char *command_path = NULL;
 	pid_t child;
-	int status;
-	void (*check_build)(char **);
+	int status, check_build;
 
 	check_build = built_in_handeler(command);
-	if (check_build)
-		check_build(command);
-
-	else
+	if (!check_build)
 	{
 		//check if there is a path directory of the command
 		command_path = _which(actual_command);
@@ -47,23 +43,33 @@ void execute(char **command)
  *@built_in - command 
  *return: 0 
  */
-void (*built_in_handeler(char **builtin))(char **command)
+int built_in_handeler(char **builtin)
 {
+	char *_env = "env";
+	int i;
+
 	built_in check_built[] = 
 	{
 		{"cd", _cd}, 
 		{"exit", exitt},
-		{"env", _printenv},
 		{"setenv", _setenv}, 
 		{"unsetenv", _unsetenv},
 		{NULL, NULL}
 	};
-	int i;
 
+	if (builtin[0] == _env)
+	{
+		_printenv();
+		return (1);
+	}
 	for (i = 0; i < 5; i++)
 	{
 		if (check_built[i].name == builtin[0])
-			return (check_built[i].func);
+		{
+			check_built[i].func(builtin);
+			return (1);
+		}
+
 	}
 	return (0);
 }

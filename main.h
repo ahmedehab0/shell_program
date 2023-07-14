@@ -54,7 +54,7 @@ list_path *list_path_directory(void);
 
 /* -------------------< functions in execute.c >------------------------------- */
 
-void (*built_in_handeler(char **builtin))(char **command);
+int built_in_handeler(char **builtin);
 void _cd(char **command);
 void exitt(char **command);
 void _setenv(char **command);
