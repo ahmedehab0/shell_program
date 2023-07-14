@@ -51,14 +51,12 @@ list_path *add_node_end(list_path **head, const char *str);
 char *_strdup(const char *str);
 void free_list(list_path *head);
 list_path *list_path_directory(void);
-char *_getenv(const char *var_name);
 
 /* -------------------< functions in execute.c >------------------------------- */
 
 void (*built_in_handeler(char **builtin))(char **command);
 void _cd(char **command);
 void exitt(char **command);
-char *_getenv(const char *var_name);
 void _setenv(char **command);
 void _unsetenv(char **command);
 
@@ -66,4 +64,11 @@ void _unsetenv(char **command);
 
 char *_which(char *file_name);
 char *str_concat(char *s1, char *s2);
+
+/* -------------------< functions in _env.c >------------------------------- */
+
+char *_getenv(const char *var_name);
+void _printenv(void);
+int _strlen(const char *s);
+
 #endif
