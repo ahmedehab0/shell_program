@@ -39,12 +39,9 @@ typedef struct built_in
 
 void _isatty();
 void sig_handler(int sig);
-ssize_t _getline(char **line_ptr, size_t *n, FILE *stream);
-char **string_parse(char *str);
 void execute(char **command);
 int _puts(char *str);
-void *_realloc(void *ptr, int new_size);
-
+int _putchar(char c);
 /* -------------------< functions in directories_list.c >--------------------- */
 
 extern char **environ;
@@ -71,5 +68,10 @@ char *str_concat(char *s1, char *s2);
 char *_getenv(const char *var_name);
 void _printenv(void);
 int _strlen(const char *s);
+
+/* ------------------< functions in string_parse.c >----------------------- */
+
+char **string_parse(char *srr);
+void *_realloc(void *ptr, int new_size);
 
 #endif
