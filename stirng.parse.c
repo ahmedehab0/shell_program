@@ -60,7 +60,6 @@ void *_realloc(void *ptr, int new_size)
 	new = malloc(new_size);
 	if (!new)
 	{
-		free(new);
 		return(NULL);
 	}
 	for (i = 0; new[i]; i++)
