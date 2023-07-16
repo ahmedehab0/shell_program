@@ -74,4 +74,7 @@ int _strlen(const char *s);
 char **string_parse(char *srr);
 void *_realloc(void *ptr, int new_size);
 
+/* -----------------< functions in _cd.c>---------------------------------- */
+
+int _strcmp(const char *s1, const char *s2);
 #endif
