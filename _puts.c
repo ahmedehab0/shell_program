@@ -12,6 +12,7 @@ int _puts(char *str)
 	if (!str)
 		return (0);
 
+	i = 0;
 	while (str[i])
 	{
 		_putchar(str[i]);
