@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- *string_parse - function to tokinize the string
- *@str: string to be tokinized
+ *string_parse - function to tokenize the string
+ *@str: string to be tokenized
  *return - array of strings
  */
 char **string_parse(char *str)
@@ -37,7 +37,7 @@ char **string_parse(char *str)
 return (token);
 }
 /**
- *_realloc - function to dinamclly reallocate the memory
+ *_realloc - function to dynamically reallocate the memory
  *@new_size: new_size to be reallocated
  *return: pointer to the new memory
  */
