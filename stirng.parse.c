@@ -49,9 +49,12 @@ void *_realloc(void *ptr, int new_size)
 	if (!ptr)
 	{
 		ptr = malloc(new_size);
+		if (!ptr)
+			return (NULL);
 		return (ptr);
 	}
-	if (new_size == 0 && ptr != NULL)
+
+	if (new_size == 0)
 	{
 		free(ptr);
 		return (NULL);
@@ -59,15 +62,11 @@ void *_realloc(void *ptr, int new_size)
 
 	new = malloc(new_size);
 	if (!new)
-	{
 		return(NULL);
-	}
-	for (i = 0; new[i]; i++)
-	{
-		new[i] = ((char *)ptr)[i];
-	}
-	/*not sure if i should free ptr*/
-	free (ptr);
 
+	for (i = 0; new[i]; i++)
+		new[i] = ((char *)ptr)[i];
+
+	free (ptr);
 	return (new);
 }
