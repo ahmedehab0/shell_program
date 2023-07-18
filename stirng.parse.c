@@ -70,3 +70,43 @@ void *_realloc(void *ptr, int new_size)
 	free (ptr);
 	return (new);
 }
+
+/**
+ * split_str - split string into array of name and value
+ * @str: a pointer to string
+ *
+ * Return: an array of two elements, name and value of environment
+ */
+char **split_str(char *str)
+{
+	/* may be similar to string parse - so we can modify later. */
+	char *delim = "=";
+	char **split = NULL;
+	char *buff = NULL;
+
+	buff = strtok(str, delim);
+	split[0] = strdup(buff);
+	buff = strtok(NULL, delim);
+	split[1] = strdup(buff);
+
+	return (split);
+}
+
+/**
+ * _strlen - get length of string
+ * @s: A pointer to char
+ *
+ * computes the length of the string s up to,
+ * but not including the terminating null character.
+ *
+ * Return: length of string
+ */
+int _strlen(const char *s)
+{
+	int len;
+
+	for (len = 0; s[len]; len++)
+		;
+
+	return (len);
+}
