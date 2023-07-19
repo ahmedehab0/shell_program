@@ -101,6 +101,13 @@ int _strlen(const char *s);
 
 /* -----------------< functions in _cd.c>---------------------------------- */
 
+void _cd(char **command);
 int _strcmp(const char *s1, const char *s2);
+
+/* ----------------< functions in _exit.c>--------------------------------- */
+
+void exitt(char **command);
+int _atoi(char *s);
+void free_arg(char **arg);
 
 #endif
