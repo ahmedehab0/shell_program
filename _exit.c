@@ -26,7 +26,7 @@ void exitt(char **command)
 	}
 	else
 	{
-		write(2,"$: exit doesn't take more than one argument\n",_strlen(error_massage));
+		write(2, error_massage, _strlen(error_massage));
 	}
 }
 /**
