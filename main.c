@@ -2,7 +2,7 @@
 /**
  *_isatty - determine whether a fd refers to a terminal or not
  */
-void _isatty()
+void _isatty(void)
 {
 	if (isatty(STDIN_FILENO))
 		_puts("($) ");
@@ -22,11 +22,11 @@ void sig_handler(int sig)
  *@av: string argument
  *Return: 0
  */
-int main(int ac __attribute__((unused)), char **av, char *envp[])
+int main(int ac __attribute__((unused)), __attribute__((unused)) char **av, __attribute__((unused)) char *envp[])
 {
 	ssize_t nread;
 	size_t n;
-	char **arg, *lineptr = NULL, *shell_name = av[0],
+	char **arg, *lineptr = NULL,
 	*delim = " ";
 
 	signal(SIGINT, sig_handler);
