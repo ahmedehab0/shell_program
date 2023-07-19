@@ -8,9 +8,9 @@ void execute(char **command)
 	char *actual_command = command[0];
 	char *command_path = NULL;
 	pid_t child;
-	int status, check_build = 0;
+	int status, check_build;
 
-	//check_build = built_in_handeler(command);
+	check_build = built_in_handeler(command);
 	if (!check_build)
 	{
 		command_path = _which(actual_command);
@@ -41,7 +41,7 @@ void execute(char **command)
  *built_in_handler - dtermines whether the command is built in or not
  *@built_in - command 
  *return: 0 
- *
+ */
 int built_in_handeler(char **builtin)
 {
 	char *_env = "env";
@@ -72,4 +72,3 @@ int built_in_handeler(char **builtin)
 	}
 	return (0);
 }
-*/

@@ -6,7 +6,6 @@
 void exitt(char **command)
 {
 
-
 }
 /**
  *_atoi - converts a string to an integer
@@ -18,7 +17,7 @@ int _atoi(char *s)
 {
 	int i, sign = 1, result = 0;
 
-	for (i = 0; s[i]; i++)
+	for (i = 0; s[i], i++)
 	{
 		if (s[i] == '-')
 			sign *= -1;

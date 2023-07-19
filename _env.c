@@ -41,7 +41,7 @@ char *_getenv(const char *var_name)
  *
  * Return: return zero on success, or -1 on error,
  * with errno set to indicate the error.
- *
+ */
 int _setenv(const char *name, const char *value, int overwrite)
 {
 	list_env *p;
@@ -70,7 +70,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 	return (0);
 }
 
-**
+/**
  * _unsetenv - deletes the variable name from the environment
  * @name: name of environment
  *
@@ -79,7 +79,7 @@ int _setenv(const char *name, const char *value, int overwrite)
  *
  * Return: return zero on success, or -1 on error,
  * with errno set to indicate the error.
- *
+ */
 int _unsetenv(const char *name)
 {
 	list_env *prev, *current;
@@ -100,11 +100,11 @@ int _unsetenv(const char *name)
 		prev = current;
 		current = current->next_env;
 	}
-	* when to return (-1) ? *
+	/* when to return (-1) ? */
 	return (0);
 }
 
-**
+/**
  * print_env - print env
  * you can list the environment with the command _printenv
  */
