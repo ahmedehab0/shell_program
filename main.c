@@ -28,7 +28,7 @@ int main(int ac __attribute__((unused)), __attribute__((unused)) char **av, __at
 	size_t n;
 	char **arg, *lineptr = NULL,
 	*delim = " ";
-
+	env_head = NULL;
 	signal(SIGINT, sig_handler);
 	while (1)
 	{
@@ -37,8 +37,8 @@ int main(int ac __attribute__((unused)), __attribute__((unused)) char **av, __at
 		if (nread == EOF)
 			exit(1);
 
-			arg = string_parse(lineptr, delim);
-			execute(arg);
+		arg = string_parse(lineptr, delim);
+		execute(arg);
 	}
 	free(lineptr);
 	free_arg(arg);
