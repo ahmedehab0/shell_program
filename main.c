@@ -13,6 +13,7 @@ void _isatty()
  */
 void sig_handler(int sig)
 {
+	if (sig == SIGINT)
 	_puts("\n($) ");
 }
 /**
@@ -21,12 +22,11 @@ void sig_handler(int sig)
  *@av: string argument
  *Return: 0
  */
-int main(int ac, char **av, char *envp[])
+int main(int ac __attribute__((unused)), char **av, char *envp[])
 {
 	ssize_t nread;
 	size_t n;
-	char *lineptr = NULL, **arg;
-	(void) ac; (void) av;
+	char **arg, *lineptr = NULL, *shell_name = av[0];
 
 	signal(SIGINT, sig_handler);
 	while (1)
