@@ -20,7 +20,6 @@ list_path *list_path_directory(void)
 	while (path_without_delim != NULL)
 	{
 
-// not sure if it is new_node or head.
 		new_node = add_node_end(&head, path_without_delim);
 		if (new_node == NULL)
 		{
@@ -32,7 +31,6 @@ list_path *list_path_directory(void)
 	}
 	free(cpy_path_line);
 
-// not sure if it is correct here!
 	free(path_without_delim);
 	return (head);
 }

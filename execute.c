@@ -13,7 +13,6 @@ void execute(char **command)
 	check_build = built_in_handeler(command);
 	if (!check_build)
 	{
-		//check if there is a path directory of the command
 		command_path = _which(actual_command);
 		if (command_path)
 		{
