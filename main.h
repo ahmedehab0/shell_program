@@ -55,8 +55,8 @@ list_path *list_path_directory(void);
 int built_in_handeler(char **builtin);
 void _cd(char **command);
 void exitt(char **command);
-// void _setenv(char **command);
-// void _unsetenv(char **command);
+void _setenv(char **command);
+void _unsetenv(char **command);
 
 /* -------------------< functions in _which.c >------------------------------- */
 
@@ -81,6 +81,7 @@ typedef struct list_env
 list_env *env_head = NULL;
 list_env *add_env_end(list_env *head, char *str);
 list_env *list_environment(void);
+void _printenv(void);
 void free_list_env(void);
 
 /* -------------------< functions in _env.c >------------------------------- */
@@ -88,7 +89,8 @@ void free_list_env(void);
 char *_getenv(const char *var_name);
 int set_env(const char *name, const char *value, int overwrite);
 int unset_env(const char *name);
-void _printenv(void);
+//void _setenv(char **command);
+//void _unsetenv(char **command);
 
 /* ------------------< functions in string_parse.c >----------------------- */
 
