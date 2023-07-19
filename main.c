@@ -21,7 +21,7 @@ void sig_handler(int sig)
  *@av: string argument
  *Return: 0
  */
-int main(int ac, char **av)
+int main(int ac, char **av, char *envp[])
 {
 	ssize_t nread;
 	size_t n;

@@ -16,7 +16,7 @@
 /**
  *struct list_path- linked list containing path directories
  *@dir - name of the directory
- *@node - pointer to the node 
+ *@next_node - pointer to the node
  */
 typedef struct list_path
 {
@@ -55,26 +55,50 @@ list_path *list_path_directory(void);
 int built_in_handeler(char **builtin);
 void _cd(char **command);
 void exitt(char **command);
-void _setenv(char **command);
-void _unsetenv(char **command);
+// void _setenv(char **command);
+// void _unsetenv(char **command);
 
 /* -------------------< functions in _which.c >------------------------------- */
 
 char *_which(char *file_name);
 char *str_concat(char *s1, char *s2);
 
+/* -------------------< functions in list_env.c >------------------------------- */
+
+/**
+ * struct list_env - linked list containing environment
+ * @name: name of environment
+ * @value: value of environment
+ * @next_env: pointer to the next node
+ */
+typedef struct list_env
+{
+	char *name;
+	char *value;
+	struct list_env *next_env;
+}list_env;
+
+list_env *env_head = NULL;
+list_env *add_env_end(list_env *head, char *str);
+list_env *list_environment(void);
+void free_list_env(void);
+
 /* -------------------< functions in _env.c >------------------------------- */
 
 char *_getenv(const char *var_name);
+int _setenv(const char *name, const char *value, int overwrite);
+int _unsetenv(const char *name);
 void _printenv(void);
-int _strlen(const char *s);
 
 /* ------------------< functions in string_parse.c >----------------------- */
 
 char **string_parse(char *srr);
 void *_realloc(void *ptr, int new_size);
+char **split_str(char *str);
+int _strlen(const char *s);
 
 /* -----------------< functions in _cd.c>---------------------------------- */
 
 int _strcmp(const char *s1, const char *s2);
+
 #endif
