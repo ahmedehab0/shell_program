@@ -26,7 +26,7 @@ char *_getenv(const char *var_name)
 }
 
 /**
- * _setenv - changes or adds an environment variable
+ * set_env - changes or adds an environment variable
  * @name: name of environment
  * @value: value of environment
  * @overwrite: new value of environment
@@ -42,7 +42,7 @@ char *_getenv(const char *var_name)
  * Return: return zero on success, or -1 on error,
  * with errno set to indicate the error.
  */
-int _setenv(const char *name, const char *value, int overwrite)
+int set_env(const char *name, const char *value, int overwrite)
 {
 	list_env *p;
 
@@ -71,7 +71,7 @@ int _setenv(const char *name, const char *value, int overwrite)
 }
 
 /**
- * _unsetenv - deletes the variable name from the environment
+ * unset_env - deletes the variable name from the environment
  * @name: name of environment
  *
  * If name does not exist in the environment, then the function succeeds,
@@ -80,7 +80,7 @@ int _setenv(const char *name, const char *value, int overwrite)
  * Return: return zero on success, or -1 on error,
  * with errno set to indicate the error.
  */
-int _unsetenv(const char *name)
+int unset_env(const char *name)
 {
 	list_env *prev, *current;
 
