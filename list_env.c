@@ -60,7 +60,10 @@ list_env *list_environment(void)
 		buff[letters] = '\n';
 		new_node = add_env_end(env_head,buff);
 		if (new_node == NULL)
+		{
 			free_list_env();
+			return (NULL);
+		}
 		i++;
 	}
 	free(buff);
@@ -87,4 +90,33 @@ void free_list_env(void)
 		current_node = env_head;
 	}
 	free(env_head);
+}
+
+/**
+ * print_env - print env
+ * you can list the environment with the command _printenv
+ */
+void _printenv(void)
+{
+	char *buff;
+	int letters, wr_cmd;
+	list_env *p;
+
+	if(env_head == NULL)
+		env_head = list_environment();
+
+	p = env_head;
+	while (p)
+	{
+		buff = _strdup(p->name);
+		buff = str_concat(buff, "=");
+		buff = str_concat(buff, p->value);
+		letters = _strlen(buff);
+		wr_cmd = write(STDOUT_FILENO, buff, letters);
+
+		if (wr_cmd == -1)
+			perror("Error");
+		free(buff);
+		p = p->next_env;
+	}
 }
