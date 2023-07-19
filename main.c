@@ -25,8 +25,8 @@ int main(int ac, char **av, char *envp[])
 {
 	ssize_t nread;
 	size_t n;
-	char *lineptr = NULL, **arg;
-	(void) ac; (void) av;
+	char *lineptr = NULL, **arg, *shell_name = av[0];
+	(void) ac;
 
 	signal(SIGINT, sig_handler);
 	while (1)
