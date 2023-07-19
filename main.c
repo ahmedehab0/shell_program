@@ -22,7 +22,7 @@ void sig_handler(int sig)
  *@av: string argument
  *Return: 0
  */
-int main(int ac __attribute__((unused)), __attribute__((unused)) char **av, __attribute__((unused)) char *envp[])
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char *envp[] __attribute__((unused)))
 {
 	ssize_t nread;
 	size_t n;
@@ -35,7 +35,9 @@ int main(int ac __attribute__((unused)), __attribute__((unused)) char **av, __at
 		_isatty();
 		nread = getline(&lineptr, &n, stdin);
 		if (nread == EOF)
+		{
 			exit(1);
+		}
 
 		arg = string_parse(lineptr, delim);
 		execute(arg);
