@@ -86,8 +86,8 @@ void free_list_env(void);
 /* -------------------< functions in _env.c >------------------------------- */
 
 char *_getenv(const char *var_name);
-int _setenv(const char *name, const char *value, int overwrite);
-int _unsetenv(const char *name);
+int set_env(const char *name, const char *value, int overwrite);
+int unset_env(const char *name);
 void _printenv(void);
 
 /* ------------------< functions in string_parse.c >----------------------- */
