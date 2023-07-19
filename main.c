@@ -40,6 +40,6 @@ int main(int ac __attribute__((unused)), char **av, char *envp[])
 			execute(arg);
 	}
 	free(lineptr);
-	free(arg);
+	free_arg(arg);
 	return (0);
 }
