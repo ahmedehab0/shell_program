@@ -37,7 +37,7 @@ typedef struct built_in
 
 /* -------------------<functions>--------------------- */
 
-void _isatty();
+void _isatty(void);
 void sig_handler(int sig);
 void execute(char **command);
 int _puts(char *str);
