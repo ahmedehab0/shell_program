@@ -5,7 +5,7 @@
  */
 void _cd(char **command)
 {
-	char *cwd;
+	char *cwd = NULL;
 	int value;
 
 	if (!command[1])

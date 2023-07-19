@@ -22,12 +22,13 @@ void sig_handler(int sig)
  *@av: string argument
  *Return: 0
  */
-int main(int ac __attribute__((unused)), char **av, char *envp[])
+int main(int ac __attribute__((unused)), char **av, char *envp[] __attribute__((unused)))
 {
 	ssize_t nread;
 	size_t n;
 	char **arg, *lineptr = NULL, *shell_name = av[0],
 	*delim = " ";
+	(void) shell_name;
 
 	signal(SIGINT, sig_handler);
 	while (1)
@@ -35,7 +36,9 @@ int main(int ac __attribute__((unused)), char **av, char *envp[])
 		_isatty();
 		nread = getline(&lineptr, &n, stdin);
 		if (nread == EOF)
+		{
 			exit(1);
+		}
 
 			arg = string_parse(lineptr, delim);
 			execute(arg);
