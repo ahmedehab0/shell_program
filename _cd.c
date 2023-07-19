@@ -29,8 +29,8 @@ void _cd(char **command)
 		return;
 	}
 	getcwd(cwd, sizeof(cwd));
-	setenv("OLDPWD", _getenv("PWD"), 1);
-	setenv("PWD", cwd, 1);
+	set_env("OLDPWD", _getenv("PWD"), 1);
+	set_env("PWD", cwd, 1);
 
 	free(cwd);
 }

@@ -12,13 +12,13 @@
 list_env *add_env_end(list_env *head, char *str)
 {
 	list_env *new_node, *p;
-	char **split_array = NULL;
+	char **split_array = NULL, *delim = "=";
 
 	new_node = malloc(sizeof(list_env));
 	if (new_node == NULL)
 		return (NULL);
 
-	split_array = split_str(str);
+	split_array = string_parse(str, delim);
 	new_node->name = strdup(split_array[0]);
 	new_node->value = strdup(split_array[1]);
 	new_node->next_env = NULL;

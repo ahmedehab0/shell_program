@@ -26,7 +26,8 @@ int main(int ac __attribute__((unused)), char **av, char *envp[])
 {
 	ssize_t nread;
 	size_t n;
-	char **arg, *lineptr = NULL, *shell_name = av[0];
+	char **arg, *lineptr = NULL, *shell_name = av[0],
+	*delim = " ";
 
 	signal(SIGINT, sig_handler);
 	while (1)
@@ -36,7 +37,7 @@ int main(int ac __attribute__((unused)), char **av, char *envp[])
 		if (nread == EOF)
 			exit(1);
 
-			arg = string_parse(lineptr);
+			arg = string_parse(lineptr, delim);
 			execute(arg);
 	}
 	free(lineptr);
