@@ -37,7 +37,7 @@ typedef struct built_in
 
 /* -------------------<functions>--------------------- */
 
-void _isatty();
+void _isatty(void);
 void sig_handler(int sig);
 void execute(char **command);
 int _puts(char *str);
@@ -53,6 +53,11 @@ list_path *list_path_directory(void);
 /* -------------------< functions in execute.c >------------------------------- */
 
 int built_in_handeler(char **builtin);
+void _cd(char **command);
+void exitt(char **command);
+void _setenv(char **command);
+void _unsetenv(char **command);
+
 /* -------------------< functions in _which.c >------------------------------- */
 
 char *_which(char *file_name);
@@ -84,8 +89,8 @@ void free_list_env(void);
 char *_getenv(const char *var_name);
 int set_env(const char *name, const char *value, int overwrite);
 int unset_env(const char *name);
-void _setenv(char **command);
-void _unsetenv(char **command);
+//void _setenv(char **command);
+//void _unsetenv(char **command);
 
 /* ------------------< functions in string_parse.c >----------------------- */
 
