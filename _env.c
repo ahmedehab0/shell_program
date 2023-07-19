@@ -13,6 +13,8 @@ char *_getenv(const char *var_name)
 
 	if(env_head == NULL)
 		env_head = list_environment();
+	if (env_head == NULL)
+		return (NULL);
 
 	p = env_head;
 	while (p)
@@ -48,6 +50,8 @@ int set_env(const char *name, const char *value, int overwrite)
 
 	if(env_head == NULL)
 		env_head = list_environment();
+	if (env_head == NULL)
+		return (-1);
 
 	p = env_head;
 	while (p)
@@ -86,6 +90,8 @@ int unset_env(const char *name)
 
 	if(env_head == NULL)
 		env_head = list_environment();
+	if (env_head == NULL)
+		return (-1);
 
 	prev = NULL;
 	current = env_head;
@@ -95,6 +101,9 @@ int unset_env(const char *name)
 		if (current->name == name)
 		{
 			prev->next_env = current->next_env;
+			free(current->name);
+			free(current->value);
+			free(current);
 			return (0);
 		}
 		prev = current;
@@ -104,31 +113,22 @@ int unset_env(const char *name)
 	return (0);
 }
 
-/**
- * print_env - print env
- * you can list the environment with the command _printenv
- */
-void _printenv(void)
+void _setenv(char **command)
 {
-	char *buff;
-	int letters, wr_cmd;
-	list_env *p;
+	int status;
 
-	if(env_head == NULL)
-		env_head = list_environment();
+	status = set_env(command[1], command[2], 1);
 
-	p = env_head;
-	while (p)
-	{
-		buff = _strdup(p->name);
-		buff = str_concat(buff, "=");
-		buff = str_concat(buff, p->value);
-		letters = _strlen(buff);
-		wr_cmd = write(STDOUT_FILENO, buff, letters);
+	if (status == -1)
+		perror("failure");
+}
 
-		if (wr_cmd == -1)
-			perror("Error");
-		free(buff);
-		p = p->next_env;
-	}
+void _unsetenv(char **command)
+{
+	int status;
+
+	status = unset_env(command[1]);
+
+	if (status == -1)
+		perror("failure");
 }
