@@ -35,23 +35,19 @@ void _cd(char **command)
 	free(cwd);
 }
 /**
- *_strcmp - function to compare to strings
+ *_strcmp - function to compare two strings
  *@s1: first string to be compared
  *@s2: second string to be compared
- *Return: 0 on success
+ *Return: 0: s1 = s2, +ve value: s1 > s2, -ve value: s1 < s2
  */
 int _strcmp(const char *s1, const char *s2)
 {
 	int i;
 
-	if (s1 == NULL || s2 == NULL)
-		return (-1);
-
-	for (i = 0; s1[i] != '\0'; i++)
+	for (i = 0; s1[i] != '\0' && s2[i] != '\0'; i++)
 	{
 		if (s1[i] != s2[i])
-			return (1);
+			return (s1[i] - s2[i]);
 	}
-	return (0);
-
+	return (s1[i] - s2[i]);
 }
