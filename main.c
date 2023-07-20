@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- *_isatty - determine whether a fd refers to a terminal or not
+ * _isatty - determine whether a fd refers to a terminal or not
  */
 void _isatty(void)
 {
@@ -8,8 +8,8 @@ void _isatty(void)
 		_puts("($) ");
 }
 /**
- *sig_handler - handles the sigint (CTR - c) signal
- *@sig - sigint
+ * sig_handler - handles the sigint (CTR - c) signal
+ * @sig: sigint
  */
 void sig_handler(int sig)
 {
@@ -17,17 +17,20 @@ void sig_handler(int sig)
 	_puts("\n($) ");
 }
 /**
- * main - simple shell program  
- *@ac: num of arguments
- *@av: string argument
- *Return: 0
+ * main - simple shell program
+ * @ac: num of arguments
+ * @av: string argument
+ * @envp: environment
+ * Return: 0
  */
-int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char *envp[] __attribute__((unused)))
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
+		 char *envp[] __attribute__((unused)))
 {
 	ssize_t nread;
 	size_t n;
 	char **arg, *lineptr = NULL,
 	*delim = " \n";
+	env_head = NULL;
 	signal(SIGINT, sig_handler);
 	while (1)
 	{
