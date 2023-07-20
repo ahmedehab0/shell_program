@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /**
  * list_path_directory - creates a linked list of PATH
  *
@@ -19,7 +18,6 @@ list_path *list_path_directory(void)
 	path_without_delim = strtok(cpy_path_line, delim);
 	while (path_without_delim != NULL)
 	{
-
 		new_node = add_node_end(&head, path_without_delim);
 		if (new_node == NULL)
 		{
@@ -30,7 +28,6 @@ list_path *list_path_directory(void)
 		path_without_delim = strtok(NULL, delim);
 	}
 	free(cpy_path_line);
-
 	free(path_without_delim);
 	return (head);
 }
