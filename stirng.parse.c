@@ -18,11 +18,10 @@ char **string_parse(char *str, char *delim)
 	}
 
 	token[i] = strtok(str, delim);
-	i++;
 
 	while(token[i])
 	{
-		token[i] = strtok(NULL, delim);
+		token[++i] = strtok(NULL, delim);
 		if (i >= buf_size)
 		{
 			buf_size += buf_size;
@@ -32,9 +31,8 @@ char **string_parse(char *str, char *delim)
 				perror("Error");
 			}
 		}
-		i++;
 	}
-return (token);
+	return (token);
 }
 /**
  *_realloc - function to dynamically reallocate the memory
