@@ -22,6 +22,7 @@ list_env *add_env_end(char *str)
 	new_node->value = strdup(split_array[1]);
 	new_node->next_env = NULL;
 
+	free(split_array);
 	if (env_head == NULL)
 	{
 		env_head = new_node;
@@ -32,7 +33,6 @@ list_env *add_env_end(char *str)
 		p = p->next_env;
 	p->next_env = new_node;
 
-	free(split_array);
 	return (new_node);
 }
 
