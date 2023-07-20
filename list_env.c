@@ -11,7 +11,7 @@
  */
 list_env *add_env_end(char *str)
 {
-	list_env *new_node, *p;
+	list_env *new_node, *p, *env_head = NULL;
 	char **split_array = NULL, *delim = "=";
 
 	new_node = malloc(sizeof(list_env));
@@ -32,8 +32,8 @@ list_env *add_env_end(char *str)
 		p = p->next_env;
 	p->next_env = new_node;
 
-//	free(split_array[0]);
-//	free(split_array[1]);
+/**	free(split_array[0]);
+	free(split_array[1]);*/
 	return (new_node);
 }
 
@@ -47,7 +47,7 @@ list_env *list_environment(void)
 	char *buff;
 	int letters;
 	int i = 0;
-	list_env *new_node;
+	list_env *new_node, *env_head = NULL;
 
 	while (environ[i])
 	{
@@ -71,7 +71,7 @@ list_env *list_environment(void)
 */
 void free_list_env(void)
 {
-	list_env *current_node;
+	list_env *current_node, *env_head = NULL;
 
 	if (env_head == NULL)
 		return;
@@ -96,7 +96,7 @@ void _printenv(void)
 {
 	char *buff;
 	int letters, wr_cmd;
-	list_env *p;
+	list_env *p, *env_head = NULL;
 
 	if(env_head == NULL)
 		env_head = list_environment();
