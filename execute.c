@@ -47,6 +47,7 @@ void execute(char **command)
  */
 int built_in_handler(char **builtin)
 {
+	int builtIntSize= 4;
 	char *_env = "env";
 	int i;
 
@@ -54,23 +55,21 @@ int built_in_handler(char **builtin)
 		{"cd", _cd},
 		{"exit", exitt},
 		{"setenv", _setenv},
-		{"unsetenv", _unsetenv},
-		{NULL, NULL}
+		{"unsetenv", _unsetenv}
 	};
 
-	if (builtin[0] == _env)
+	if (strcmp(builtin[0], _env) == 0)
 	{
 		_printenv();
 		return (1);
 	}
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < builtIntSize; i++)
 	{
-		if (check_built[i].name == builtin[0])
+		if (strcmp(check_built[i].name, builtin[0]) == 0)
 		{
 			check_built[i].func(builtin);
 			return (1);
 		}
-
 	}
 	return (0);
 }

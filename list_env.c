@@ -93,8 +93,7 @@ void free_list_env(void)
  */
 void _printenv(void)
 {
-	char *buff;
-	int letters, wr_cmd;
+	char *buff, *temp;
 	list_env *p;
 
 	if (env_head == NULL)
@@ -103,14 +102,11 @@ void _printenv(void)
 	p = env_head;
 	while (p)
 	{
-		buff = _strdup(p->name);
-		buff = str_concat(buff, "=");
-		buff = str_concat(buff, p->value);
-		letters = _strlen(buff);
-		wr_cmd = write(STDOUT_FILENO, buff, letters);
-
-		if (wr_cmd == -1)
-			perror("Error");
+		temp = str_concat(p->name, "=");
+		buff = str_concat(temp, p->value);
+		free(temp);
+		_puts(buff);
+		_puts("\n");
 		free(buff);
 		p = p->next_env;
 	}

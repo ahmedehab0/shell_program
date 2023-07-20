@@ -12,7 +12,7 @@ void exitt(char **command)
 		;
 	if (i == 1)
 	{
-		free_arg(command);
+		free(command);
 		exit(status);
 	}
 	else if (i == 2)
@@ -21,7 +21,7 @@ void exitt(char **command)
 		if (status <= -1)
 			status = 2;
 
-		free_arg(command);
+		free(command);
 		exit(status);
 	}
 	else
@@ -51,17 +51,4 @@ int _atoi(char *s)
 		}
 	}
 	return (sign * result);
-}
-/**
- *free_arg - frees a double a pointer
- *@arg: array of strings
- */
-void free_arg(char **arg)
-{
-	int i;
-
-	for (i = 0; arg[i]; i++)
-		free(arg[i]);
-
-	free(arg);
 }

@@ -34,6 +34,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
 	signal(SIGINT, sig_handler);
 	while (1)
 	{
+		lineptr = NULL;
 		_isatty();
 		nread = getline(&lineptr, &n, stdin);
 		if (nread == EOF)
@@ -45,8 +46,8 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
 		execute(arg);
 		if(arg != NULL || *arg != NULL)
 			free(arg);
-		if(lineptr != NULL)
-			free(lineptr);
+//		if(lineptr != NULL || *lineptr != NULL)
+//			free(lineptr);
 	}
 	return (0);
 }
