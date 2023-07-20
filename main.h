@@ -42,7 +42,7 @@ void sig_handler(int sig);
 void execute(char **command);
 int _puts(char *str);
 int _putchar(char c);
-/* -------------------< functions in directories_list.c >--------------------- */
+/* -------------------< functions in directories_list.c >------------------ */
 
 extern char **environ;
 list_path *add_node_end(list_path **head, const char *str);
@@ -50,16 +50,16 @@ char *_strdup(const char *str);
 void free_list(list_path *head);
 list_path *list_path_directory(void);
 
-/* -------------------< functions in execute.c >------------------------------- */
+/* -------------------< functions in execute.c >--------------------------- */
 
 int built_in_handler(char **builtin);
 
-/* -------------------< functions in _which.c >------------------------------- */
+/* -------------------< functions in _which.c >---------------------------- */
 
 char *_which(char *file_name);
 char *str_concat(char *s1, char *s2);
 
-/* -------------------< functions in list_env.c >------------------------------- */
+/* -------------------< functions in list_env.c >-------------------------- */
 
 /**
  * struct list_env - linked list containing environment
@@ -72,7 +72,7 @@ typedef struct list_env
 	char *name;
 	char *value;
 	struct list_env *next_env;
-}list_env;
+} list_env;
 
 list_env *env_head;
 list_env *add_env_end(char *str);
