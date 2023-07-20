@@ -33,10 +33,7 @@ list_env *add_env_end(char *str)
 		p = p->next_env;
 	p->next_env = new_node;
 
-<<<<<<< HEAD
-=======
 	free(split_array);	
->>>>>>> parent of 7de4b9d... free buff
 	return (new_node);
 }
 
