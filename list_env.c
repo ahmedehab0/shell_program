@@ -9,7 +9,7 @@
  *
  * Return: the address of the new element, or NULL if it failed
  */
-list_env *add_env_end(list_env *head, char *str)
+list_env *add_env_end(char *str)
 {
 	list_env *new_node, *p;
 	char **split_array = NULL, *delim = "=";
@@ -23,21 +23,17 @@ list_env *add_env_end(list_env *head, char *str)
 	new_node->value = strdup(split_array[1]);
 	new_node->next_env = NULL;
 
-	if (head == NULL)
-	{
-		head = new_node;
-		free(split_array[0]);
-		free(split_array[1]);
-		return (head);
+	if(env_head == NULL) {
+		env_head = new_node;
+		return env_head;
 	}
-
-	p = head;
+	p = env_head;
 	while (p->next_env != NULL)
 		p = p->next_env;
 	p->next_env = new_node;
 
-	free(split_array[0]);
-	free(split_array[1]);
+//	free(split_array[0]);
+//	free(split_array[1]);
 	return (new_node);
 }
 
@@ -57,8 +53,8 @@ list_env *list_environment(void)
 	{
 		letters = _strlen(environ[i]);
 		buff = _strdup(environ[i]);
-		buff[letters] = '\n';
-		new_node = add_env_end(env_head,buff);
+		buff[letters] = '\0';
+		new_node = add_env_end(buff);
 		if (new_node == NULL)
 		{
 			free_list_env();
