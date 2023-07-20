@@ -19,8 +19,7 @@ char *_getenv(const char *var_name)
 	p = env_head;
 	while (p)
 	{
-		/* p->name == var_name) */
-		if (*(p->name) == *var_name)
+		if (strcmp(p->name, var_name) == 0)
 			return (p->value);
 		p = p->next_env;
 	}
@@ -56,7 +55,7 @@ int set_env(const char *name, const char *value, int overwrite)
 	p = env_head;
 	while (p)
 	{
-		if (p->name == name)
+		if (strcmp(p->name, name) == 0)
 		{
 			if (overwrite != 0)
 				p->value = strdup(value);
@@ -98,7 +97,7 @@ int unset_env(const char *name)
 
 	while (current)
 	{
-		if (current->name == name)
+		if (strcmp(current->name, name) == 0)
 		{
 			prev->next_env = current->next_env;
 			free(current->name);
