@@ -18,6 +18,7 @@ void execute(char **command)
 		{
 			actual_command = command_path;
 		}
+		/* TODO: fork must not be called if the command doesn’t exist */
 		child = fork();
 		if (child < 0)
 		{
@@ -26,6 +27,8 @@ void execute(char **command)
 		}
 		else if (child == 0)
 		{
+			/* TODO: execve will be the core part of your Shell, */
+			/* TODO: don’t forget to pass the environ to it… */
 			if (execve(actual_command, command, NULL) == -1)
 			{
 				perror(actual_command);
