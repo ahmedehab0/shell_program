@@ -32,8 +32,7 @@ list_env *add_env_end(char *str)
 		p = p->next_env;
 	p->next_env = new_node;
 
-/*	free(split_array[0]); */
-/*	free(split_array[1]); */
+	free(split_array);	
 	return (new_node);
 }
 

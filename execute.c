@@ -36,6 +36,7 @@ void execute(char **command)
 		else
 			wait(&status);
 	}
+	free(command_path);
 }
 /**
  * built_in_handler - dtermines whether the command is built in or not
