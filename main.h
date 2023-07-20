@@ -15,25 +15,25 @@
 
 /**
  *struct list_path- linked list containing path directories.
- *@dir - name of the directory.
- *@next_node - pointer to the node.
+ *@dir: name of the directory.
+ *@next_node: pointer to the node.
  */
 typedef struct list_path
 {
 	char *dir;
 	struct list_path *next_node;
-}list_path;
+} list_path;
 
 /**
- *struct built_in - struct to the built in commands and the corresponding function  
- *@name - built in command 
- *@func - corresponding function 
+ *struct built_in - struct to the built in commands and the corresponding function.
+ *@name: built in command 
+ *@func: corresponding function 
  */
 typedef struct built_in
 {
 	char *name;
 	void (*func)(char **);
-}built_in;
+} built_in;
 
 /* -------------------<functions>--------------------- */
 
