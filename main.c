@@ -43,7 +43,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
 
 		arg = string_parse(lineptr, delim);
 		execute(arg);
-		if(arg != NULL)
+		if(arg != NULL || *arg != NULL)
 			free(arg);
 		if(lineptr != NULL)
 			free(lineptr);
