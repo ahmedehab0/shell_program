@@ -14,7 +14,7 @@
 #include <sys/stat.h>
 
 /**
- *struct list_path- linked list containing path directories
+ *struct list_path- linked list containing path directories.
  *@dir - name of the directory
  *@next_node - pointer to the node
  */
