@@ -26,7 +26,7 @@ typedef struct list_path
 
 /**
  *struct built_in - struct to built in commands and the corresponding function
- *@name: built in command 
+ *@name: built in command
  *@func: corresponding function
  */
 typedef struct built_in
