@@ -37,6 +37,7 @@ void execute(char **command)
 			wait(&status);
 	}
 	free(command_path);
+	free(actual_command);
 	free_list_env();
 }
 /**
