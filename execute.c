@@ -23,6 +23,7 @@ void execute(char **command)
 		{
 			perror("Error:");
 			exit(errno);
+
 		}
 		else if (child == 0)
 		{
@@ -37,8 +38,7 @@ void execute(char **command)
 	}
 	if(command_path != NULL)
 		free(command_path);
-	if (env_head != NULL)
-		free_list_env();
+	free_list_env();
 }
 /**
  * built_in_handler - dtermines whether the command is built in or not
