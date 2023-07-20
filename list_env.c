@@ -33,6 +33,7 @@ list_env *add_env_end(char *str)
 		p = p->next_env;
 	p->next_env = new_node;
 
+	free(split_array);	
 	return (new_node);
 }
 
@@ -54,7 +55,6 @@ list_env *list_environment(void)
 		buff = _strdup(environ[i]);
 		buff[letters] = '\0';
 		new_node = add_env_end(buff);
-		free(buff);
 		if (new_node == NULL)
 		{
 			free_list_env();
@@ -62,6 +62,7 @@ list_env *list_environment(void)
 		}
 		i++;
 	}
+	free(buff);
 	return (env_head);
 }
 
