@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  *_cd - change directory built in command
- *@command: parsed string 
+ *@command: parsed string
  */
 void _cd(char **command)
 {

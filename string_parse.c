@@ -1,9 +1,11 @@
 #include "main.h"
 
 /**
- *string_parse - function to tokenize the string
- *@str: string to be tokenized
- *return - array of strings
+ * string_parse - function to tokenize the string
+ * @str: string to be tokenized
+ * @delim: delimiter
+ *
+ * Return: array of strings
  */
 char **string_parse(char *str, char *delim)
 {
@@ -19,13 +21,13 @@ char **string_parse(char *str, char *delim)
 
 	token[i] = strtok(str, delim);
 
-	while(token[i])
+	while (token[i])
 	{
 		token[++i] = strtok(NULL, delim);
 		if (i >= buf_size)
 		{
 			buf_size += buf_size;
-			token = _realloc(token, sizeof (char *) * buf_size);
+			token = _realloc(token, sizeof(char *) * buf_size);
 			if (!token)
 			{
 				perror("Error");
@@ -35,9 +37,11 @@ char **string_parse(char *str, char *delim)
 	return (token);
 }
 /**
- *_realloc - function to dynamically reallocate the memory
- *@new_size: new_size to be reallocated
- *return: pointer to the new memory
+ * _realloc - function to dynamically reallocate the memory
+ * @ptr: a pointer
+ * @new_size: new_size to be reallocated
+ *
+ * Return: pointer to the new memory
  */
 void *_realloc(void *ptr, int new_size)
 {
@@ -60,12 +64,12 @@ void *_realloc(void *ptr, int new_size)
 
 	new = malloc(new_size);
 	if (!new)
-		return(NULL);
+		return (NULL);
 
 	for (i = 0; new[i]; i++)
 		new[i] = ((char *)ptr)[i];
 
-	free (ptr);
+	free(ptr);
 	return (new);
 }
 /**

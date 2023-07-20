@@ -52,7 +52,7 @@ list_path *list_path_directory(void);
 
 /* -------------------< functions in execute.c >------------------------------- */
 
-int built_in_handeler(char **builtin);
+int built_in_handler(char **builtin);
 
 /* -------------------< functions in _which.c >------------------------------- */
 

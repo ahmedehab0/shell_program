@@ -1,14 +1,14 @@
 #include "main.h"
 /**
- *exitt - exits the shell
- *@command: status of the exit function
+ * exitt - exits the shell
+ * @command: status of the exit function
  */
 void exitt(char **command)
 {
 	int status = 0, i;
 	char *error_massage = "$: exit doesn't take more than one argument\n";
 
-	for(i = 0; command[i]; i++)
+	for (i = 0; command[i]; i++)
 		;
 	if (i == 1)
 	{
@@ -30,10 +30,10 @@ void exitt(char **command)
 	}
 }
 /**
- *_atoi - converts a string to an integer
+ * _atoi - converts a string to an integer
  *
- *@s: string to be converted
- *return: integer
+ * @s: string to be converted
+ * Return: integer
  */
 int _atoi(char *s)
 {
@@ -48,13 +48,13 @@ int _atoi(char *s)
 		{
 			result *= 10;
 			result += (s[i] - '0');
-		}	
+		}
 	}
 	return (sign * result);
 }
 /**
  *free_arg - frees a double a pointer
- *@arg - array of strings
+ *@arg: array of strings
  */
 void free_arg(char **arg)
 {

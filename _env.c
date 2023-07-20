@@ -11,7 +11,7 @@ char *_getenv(const char *var_name)
 {
 	list_env *p;
 
-	if(env_head == NULL)
+	if (env_head == NULL)
 		env_head = list_environment();
 	if (env_head == NULL)
 		return (NULL);
@@ -47,7 +47,7 @@ int set_env(const char *name, const char *value, int overwrite)
 {
 	list_env *p;
 
-	if(env_head == NULL)
+	if (env_head == NULL)
 		env_head = list_environment();
 	if (env_head == NULL)
 		return (-1);
@@ -87,7 +87,7 @@ int unset_env(const char *name)
 {
 	list_env *prev, *current;
 
-	if(env_head == NULL)
+	if (env_head == NULL)
 		env_head = list_environment();
 	if (env_head == NULL)
 		return (-1);
@@ -112,6 +112,10 @@ int unset_env(const char *name)
 	return (0);
 }
 
+/**
+ * _setenv - see set_env function
+ * @command: string pointer
+ */
 void _setenv(char **command)
 {
 	int status;
@@ -122,6 +126,10 @@ void _setenv(char **command)
 		perror("failure");
 }
 
+/**
+ * _unsetenv - see unset_env function
+ * @command: string pointer
+ */
 void _unsetenv(char **command)
 {
 	int status;
