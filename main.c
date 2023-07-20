@@ -8,7 +8,7 @@ void _isatty(void)
 		_puts("($) ");
 }
 /**
- *sig_handler - handels the sigint (CTR - c) signal
+ *sig_handler - handles the sigint (CTR - c) signal
  *@sig - sigint
  */
 void sig_handler(int sig)
@@ -27,7 +27,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 	ssize_t nread;
 	size_t n;
 	char **arg, *lineptr = NULL,
-	*delim = " ";
+	*delim = " \n";
 	env_head = NULL;
 	signal(SIGINT, sig_handler);
 	while (1)
