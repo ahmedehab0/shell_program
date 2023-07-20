@@ -47,7 +47,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
 		if(arg != NULL)
 			free(arg);
 /*		if(lineptr != NULL || *lineptr != NULL)*/
-/*			free(lineptr);*/s
+/*			free(lineptr);*/
 	}
 	return (0);
 }
