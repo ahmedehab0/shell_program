@@ -5,27 +5,13 @@
  * @str: string to be printed
  * Return: number of chars printed
  */
-int _puts(char *str)
+int _puts(char *str, int stream)
 {
 	int i;
 
-	if (!str)
-		return (0);
-
-	i = 0;
-	while (str[i])
+	for (i = 0; str[i]; i++)
 	{
-		_putchar(str[i]);
-		i++;
+		write(stream, &str[i], 1);
 	}
-	return (i);
-}
-/**
- * _putchar - prints a char to the stream
- * @c: char to be printed
- * Return: 1
- */
-int _putchar(char c)
-{
-	return (write(STDOUT_FILENO, &c, 1));
+	return ((i + 1));
 }
