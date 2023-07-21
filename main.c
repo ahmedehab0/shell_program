@@ -43,6 +43,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
 		nread = getline(&lineptr, &n, stdin);
 		if (nread == EOF)
 		{
+			free_list_env();
 			free(lineptr);
 			exit(1);
 		}
