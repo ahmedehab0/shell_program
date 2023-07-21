@@ -29,7 +29,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
 	ssize_t nread;
 	size_t n;
 	char **arg, *lineptr;
-	char *delim = " \n";
+	char *delim = " \n\t";
 
 	env_head = NULL;
 	signal(SIGINT, sig_handler);
