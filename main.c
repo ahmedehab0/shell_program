@@ -44,6 +44,8 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
 		}
 
 		arg = string_parse(lineptr, delim);
+		if(_strcmp(arg[0], "") == 0)
+			continue;
 		execute(arg);
 		free(lineptr);
 		free(arg);

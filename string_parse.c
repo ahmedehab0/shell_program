@@ -15,7 +15,6 @@ char **string_parse(char *str, char *delim)
 	token = malloc(sizeof(char *) * buf_size);
 	if (!token)
 	{
-		/* free(token); */
 		return (NULL);
 	}
 
