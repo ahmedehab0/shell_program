@@ -36,7 +36,7 @@ void _perror(char *command, char *shell_name)
 void _isatty(void)
 {
 	if (isatty(STDIN_FILENO))
-		_puts("#cisfun$ ", 1);
+		_puts("($) ", 1);
 }
 
 /**
