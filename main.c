@@ -28,8 +28,9 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
 {
 	ssize_t nread;
 	size_t n;
-	char **arg, *lineptr = NULL,
-	*delim = " \n";
+	char **arg, *lineptr;
+	char *delim = " \n\t";
+
 	env_head = NULL;
 	signal(SIGINT, sig_handler);
 	while (1)
@@ -45,7 +46,11 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
 
 		arg = string_parse(lineptr, delim);
 		if(_strcmp(arg[0], "") == 0)
+		{
+			free(lineptr);
+			free(arg);
 			continue;
+		}
 		execute(arg);
 		free(lineptr);
 		free(arg);
