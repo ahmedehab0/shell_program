@@ -23,7 +23,7 @@ char *_which(char *file_name)
 	if (stat(file_name, &st) == 0)
 	{
 		free_list(head);
-		return (file_name);
+		return (_strdup(file_name));
 	}
 
 	while (path_directories != NULL)
