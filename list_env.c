@@ -25,6 +25,7 @@ list_env *add_env_end(char *str)
 	if (env_head == NULL)
 	{
 		env_head = new_node;
+		free(split_array);
 		return (env_head);
 	}
 	p = env_head;
