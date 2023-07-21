@@ -1,4 +1,34 @@
 #include "main.h"
+
+/**
+ * built_in_handler - determines whether the command is built in or not
+ * @builtin: command
+ * Return: 0
+ */
+int built_in_handler(char **builtin)
+{
+	int builtIntSize = 5;
+	int i;
+
+	built_in check_built[] = {
+			{"cd", _cd},
+			{"env", _env},
+			{"setenv", _setenv},
+			{"unsetenv", _unsetenv},
+			{"exit", _exit_}
+	};
+
+	for (i = 0; i < builtIntSize; i++)
+	{
+		if (_strcmp(check_built[i].name, builtin[0]) == 0)
+		{
+			check_built[i].func(builtin);
+			return (1);
+		}
+	}
+	return (0);
+}
+
 /**
  *execute - function to execute the commands
  *@command: the command that should be executed
@@ -7,7 +37,7 @@ void execute(char **command)
 {
 	char *actual_command = command[0];
 	char *command_path = NULL;
-	pid_t child;
+	pid_t child = 0;
 	int status, check_build;
 
 	check_build = built_in_handler(command);
@@ -41,36 +71,50 @@ void execute(char **command)
 	}
 	free(command_path);
 }
+
 /**
- * built_in_handler - dtermines whether the command is built in or not
- * @builtin: command
- * Return: 0
+ * _which - looks for files in the current PATH.
+ * @file_name: file name
+ *
+ * Return: file path
  */
-int built_in_handler(char **builtin)
+char *_which(char *file_name)
 {
-	int builtIntSize= 4;
-	char *_env = "env";
-	int i;
+	char cwd[256];
+	char *dir_path;
+	char *c_w_d;
+	char *c_w_d_temp;
+	list_path *path_directories, *head;
+	struct stat st;
+	int i = 0;
 
-	built_in check_built[] = {
-		{"cd", _cd},
-		{"exit", exitt},
-		{"setenv", _setenv},
-		{"unsetenv", _unsetenv}
-	};
+	path_directories = list_path_directory();
+	head = path_directories;
+	getcwd(cwd, sizeof(cwd));
 
-	if (_strcmp(builtin[0], _env) == 0)
+	if (stat(file_name, &st) == 0)
 	{
-		_printenv();
-		return (1);
+		free_list(head);
+		return (_strdup(file_name));
 	}
-	for (i = 0; i < builtIntSize; i++)
+
+	while (path_directories != NULL)
 	{
-		if (_strcmp(check_built[i].name, builtin[0]) == 0)
+		dir_path = path_directories[i].dir;
+		chdir(dir_path);
+		if (stat(file_name, &st) == 0)
 		{
-			check_built[i].func(builtin);
-			return (1);
+			c_w_d_temp = dir_path;
+			c_w_d = str_concat(c_w_d_temp, "/");
+			c_w_d_temp = str_concat(c_w_d, file_name);
+			free(c_w_d);
+			chdir(cwd);
+			free_list(head);
+			return (c_w_d_temp);
 		}
+		path_directories = path_directories->next_node;
 	}
-	return (0);
+	chdir(cwd);
+	free_list(head);
+	return (NULL);
 }

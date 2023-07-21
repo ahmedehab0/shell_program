@@ -35,31 +35,36 @@ typedef struct built_in
 	void (*func)(char **);
 } built_in;
 
-/* -------------------<functions>--------------------- */
+/* -----------------< functions in built_in.c>------------------------------ */
 
-void _isatty(void);
-void sig_handler(int sig);
-void execute(char **command);
-int _puts(char *str);
-int _putchar(char c);
-/* -------------------< functions in directories_list.c >------------------ */
+void _cd(char **command);
+void _env(__attribute__((unused)) char **command);
+void _exit_(char **command);
+void _setenv(char **command);
+void _unsetenv(char **command);
 
-extern char **environ;
-list_path *add_node_end(list_path **head, const char *str);
-char *_strdup(const char *str);
-void free_list(list_path *head);
-list_path *list_path_directory(void);
-
-/* -------------------< functions in execute.c >--------------------------- */
+/* -------------------< functions in execute.c >---------------------------- */
 
 int built_in_handler(char **builtin);
-
-/* -------------------< functions in _which.c >---------------------------- */
-
+void execute(char **command);
 char *_which(char *file_name);
-char *str_concat(char *s1, char *s2);
 
-/* -------------------< functions in list_env.c >-------------------------- */
+/* -------------------< functions in write.c >------------------------------ */
+
+int _puts(char *str);
+int _putchar(char c);
+void _isatty(void);
+void sig_handler(int sig);
+
+/* -------------------< functions in directories_list.c >------------------- */
+
+extern char **environ;
+
+list_path *add_node_end(list_path **head, const char *str);
+list_path *list_path_directory(void);
+void free_list(list_path *head);
+
+/* -------------------< functions in env_list.c >--------------------------- */
 
 /**
  * struct list_env - linked list containing environment
@@ -75,34 +80,29 @@ typedef struct list_env
 } list_env;
 
 list_env *env_head;
+
 list_env *add_env_end(char *str);
 list_env *list_environment(void);
-void _printenv(void);
 void free_list_env(void);
+void _printenv(void);
 
-/* -------------------< functions in _env.c >------------------------------- */
+/* -------------------< functions in env.c >-------------------------------- */
 
 char *_getenv(const char *var_name);
 int set_env(const char *name, const char *value, int overwrite);
 int unset_env(const char *name);
-void _setenv(char **command);
-void _unsetenv(char **command);
 
-/* ------------------< functions in string_parse.c >----------------------- */
+/* ------------------< functions in string_parse.c >------------------------ */
 
 char **string_parse(char *str, char *delim);
 void *_realloc(void *ptr, int new_size);
+
+/* ----------------< functions in string.c >-------------------------------- */
+
+int _atoi(const char *s);
 int _strlen(const char *s);
-
-/* -----------------< functions in _cd.c>---------------------------------- */
-
-void _cd(char **command);
 int _strcmp(const char *s1, const char *s2);
-
-/* ----------------< functions in _exit.c>--------------------------------- */
-
-void exitt(char **command);
-int _atoi(char *s);
-void free_arg(char **arg);
+char *_strdup(const char *str);
+char *str_concat(const char *s1, const char *s2);
 
 #endif

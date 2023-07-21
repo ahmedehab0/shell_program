@@ -35,6 +35,7 @@ char **string_parse(char *str, char *delim)
 	}
 	return (token);
 }
+
 /**
  * _realloc - function to dynamically reallocate the memory
  * @ptr: a pointer
@@ -70,22 +71,4 @@ void *_realloc(void *ptr, int new_size)
 
 	free(ptr);
 	return (new);
-}
-/**
- * _strlen - get length of string
- * @s: A pointer to char
- *
- * computes the length of the string s up to,
- * but not including the terminating null character.
- *
- * Return: length of string
- */
-int _strlen(const char *s)
-{
-	int len;
-
-	for (len = 0; s[len]; len++)
-		;
-
-	return (len);
 }
