@@ -30,8 +30,8 @@ int built_in_handler(char **builtin)
 }
 
 /**
- *execute - function to execute the commands
- *@command: the command that should be executed
+ * execute - function to execute the commands
+ * @command: the command that should be executed
  * @shell_name: shell name
  */
 void execute(char **command, char *shell_name)

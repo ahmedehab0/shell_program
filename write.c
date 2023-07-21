@@ -18,10 +18,9 @@ int _puts(char *str, int stream)
 }
 
 /**
- *_perror - handles the error massage if the command is not found
- *@command: name of the command
- *@shell_name: name of the program
- *
+ * _perror - handles the error massage if the command is not found
+ * @command: name of the command
+ * @shell_name: name of the program
  */
 void _perror(char *command, char *shell_name)
 {
