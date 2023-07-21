@@ -5,7 +5,7 @@
 void _isatty(void)
 {
 	if (isatty(STDIN_FILENO))
-		_puts("($) ", 1);
+		_puts("($) ");
 }
 /**
  * sig_handler - handles the sigint (CTR - c) signal
@@ -16,7 +16,7 @@ void sig_handler(int sig)
 	if (sig == SIGINT)
 	{
 		free_list_env();
-		_puts("\n($) ", 1);
+		_puts("\n($) ");
 	}
 }
 /**
@@ -26,12 +26,12 @@ void sig_handler(int sig)
  * @envp: environment
  * Return: 0
  */
-int main(int ac __attribute__((unused)), char **av,
+int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
 		 char *envp[] __attribute__((unused)))
 {
 	ssize_t nread;
 	size_t n;
-	char **arg, *lineptr, *shell_name = av[0];
+	char **arg, *lineptr;
 	char *delim = " \n\t";
 
 	env_head = NULL;
@@ -55,7 +55,7 @@ int main(int ac __attribute__((unused)), char **av,
 			free(arg);
 			continue;
 		}
-		execute(arg, shell_name);
+		execute(arg);
 		free(lineptr);
 		free(arg);
 	}

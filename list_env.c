@@ -105,8 +105,8 @@ void _printenv(void)
 		temp = str_concat(p->name, "=");
 		buff = str_concat(temp, p->value);
 		free(temp);
-		_puts(buff, 1);
-		_puts("\n", 1);
+		_puts(buff);
+		_puts("\n");
 		free(buff);
 		p = p->next_env;
 	}

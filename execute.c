@@ -3,7 +3,7 @@
  *execute - function to execute the commands
  *@command: the command that should be executed
  */
-void execute(char **command, char *shell_name)
+void execute(char **command)
 {
 	char *actual_command = command[0];
 	char *command_path = NULL;
@@ -22,7 +22,7 @@ void execute(char **command, char *shell_name)
 		/* TODO: fork must not be called if the command doesn’t exist */
 		if (child < 0)
 		{
-			perror("Error");
+			perror("Error:");
 			exit(errno);
 
 		}
@@ -32,7 +32,7 @@ void execute(char **command, char *shell_name)
 			/* TODO: don’t forget to pass the environ to it… */
 			if (execve(actual_command, command, NULL) == -1)
 			{
-				_perror(actual_command, shell_name);
+				perror(actual_command);
 				exit(errno);
 			}
 		}

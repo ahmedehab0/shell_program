@@ -39,10 +39,9 @@ typedef struct built_in
 
 void _isatty(void);
 void sig_handler(int sig);
-void execute(char **command, char *shell_name);
-int _puts(char *str, int stream);
+void execute(char **command);
+int _puts(char *str);
 int _putchar(char c);
-void _perror(char *command, char *shell_name);
 /* -------------------< functions in directories_list.c >------------------ */
 
 extern char **environ;
