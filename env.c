@@ -58,7 +58,10 @@ int set_env(const char *name, const char *value, int overwrite)
 		if (_strcmp(p->name, name) == 0)
 		{
 			if (overwrite != 0)
+			{
+				free(p->value);
 				p->value = _strdup(value);
+			}
 			return (0);
 		}
 		prev = p;
