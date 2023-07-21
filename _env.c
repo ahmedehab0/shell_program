@@ -45,7 +45,7 @@ char *_getenv(const char *var_name)
  */
 int set_env(const char *name, const char *value, int overwrite)
 {
-	list_env *p;
+	list_env *p, *prev;
 
 	if (env_head == NULL)
 		env_head = list_environment();
@@ -61,6 +61,7 @@ int set_env(const char *name, const char *value, int overwrite)
 				p->value = _strdup(value);
 			return (0);
 		}
+		prev = p;
 		p = p->next_env;
 	}
 	p = malloc(sizeof(list_env));
@@ -70,6 +71,7 @@ int set_env(const char *name, const char *value, int overwrite)
 	p->name = _strdup(name);
 	p->value = _strdup(value);
 	p->next_env = NULL;
+	prev->next_env = p;
 	return (0);
 }
 

@@ -40,7 +40,6 @@ void execute(char **command)
 			wait(&status);
 	}
 	free(command_path);
-	free_list_env();
 }
 /**
  * built_in_handler - dtermines whether the command is built in or not

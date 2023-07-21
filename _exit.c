@@ -8,6 +8,7 @@ void exitt(char **command)
 	int status = 0, i;
 	char *error_massage = "$: exit doesn't take more than one argument\n";
 
+	free_list_env();
 	for (i = 0; command[i]; i++)
 		;
 	if (i == 1)
