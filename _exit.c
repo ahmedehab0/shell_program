@@ -12,6 +12,7 @@ void exitt(char **command)
 		;
 	if (i == 1)
 	{
+		free(command[0]);
 		free(command);
 		exit(status);
 	}
@@ -21,6 +22,7 @@ void exitt(char **command)
 		if (status <= -1)
 			status = 2;
 
+                free(command[0]);
 		free(command);
 		exit(status);
 	}
