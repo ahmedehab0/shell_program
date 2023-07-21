@@ -58,7 +58,7 @@ int set_env(const char *name, const char *value, int overwrite)
 		if (_strcmp(p->name, name) == 0)
 		{
 			if (overwrite != 0)
-				p->value = strdup(value);
+				p->value = _strdup(value);
 			return (0);
 		}
 		p = p->next_env;
