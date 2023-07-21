@@ -14,7 +14,10 @@ void _isatty(void)
 void sig_handler(int sig)
 {
 	if (sig == SIGINT)
-	_puts("\n($) ");
+	{
+		free_list_env();
+		_puts("\n($) ");
+	}
 }
 /**
  * main - simple shell program
