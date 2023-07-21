@@ -42,16 +42,16 @@ void _env(__attribute__((unused)) char **command);
 void _exit_(char **command);
 void _setenv(char **command);
 void _unsetenv(char **command);
-
 /* -------------------< functions in execute.c >---------------------------- */
 
 int built_in_handler(char **builtin);
-void execute(char **command);
+void execute(char **command, char *shell_name);
+void _perror(char *command, char *shell_name);
 char *_which(char *file_name);
 
 /* -------------------< functions in write.c >------------------------------ */
 
-int _puts(char *str);
+int _puts(char *str, int stream);
 int _putchar(char c);
 void _isatty(void);
 void sig_handler(int sig);

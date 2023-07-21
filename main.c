@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * main - simple shell program
  * @ac: num of arguments
@@ -7,12 +6,12 @@
  * @envp: environment
  * Return: 0
  */
-int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
+int main(int ac __attribute__((unused)), char **av,
 		 char *envp[] __attribute__((unused)))
 {
 	ssize_t nread;
 	size_t n;
-	char **arg, *lineptr;
+	char **arg, *lineptr, *shell_name = av[0];
 	char *delim = " \n\t";
 
 	env_head = NULL;
@@ -36,7 +35,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)),
 			free(arg);
 			continue;
 		}
-		execute(arg);
+		execute(arg, shell_name);
 		free(lineptr);
 		free(arg);
 	}

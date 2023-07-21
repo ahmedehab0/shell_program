@@ -33,7 +33,7 @@ int built_in_handler(char **builtin)
  *execute - function to execute the commands
  *@command: the command that should be executed
  */
-void execute(char **command)
+void execute(char **command, char *shell_name)
 {
 	char *actual_command = command[0];
 	char *command_path = NULL;
@@ -52,7 +52,7 @@ void execute(char **command)
 		/* TODO: fork must not be called if the command doesn’t exist */
 		if (child < 0)
 		{
-			perror("Error:");
+			perror("Error");
 			exit(errno);
 
 		}
@@ -62,8 +62,7 @@ void execute(char **command)
 			/* TODO: don’t forget to pass the environ to it… */
 			if (execve(actual_command, command, NULL) == -1)
 			{
-				perror(actual_command);
-				exit(errno);
+				_perror(actual_command, shell_name);
 			}
 		}
 		else
