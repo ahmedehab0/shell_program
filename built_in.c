@@ -35,34 +35,6 @@ void _cd(char **command)
 }
 
 /**
- * _exit_ - exits the shell
- * @command: status of the exit function
- */
-void _exit_(char **command)
-{
-	int status = 0, i;
-
-	free_list_env();
-	for (i = 0; command[i]; i++)
-		;
-	if (i == 1)
-	{
-		free(command[0]);
-		free(command);
-		exit(status);
-	}
-	else
-	{
-		status = _atoi(command[1]);
-		if (status <= -1)
-			status = 2;
-
-		free(command[0]);
-		free(command);
-		exit(status);
-	}
-}
-/**
  * _env - print environment
  * @command: unused command line
  */
@@ -97,4 +69,33 @@ void _unsetenv(char **command)
 
 	if (status == -1)
 		perror("failure");
+}
+
+/**
+ * _exit_ - exits the shell
+ * @command: status of the exit function
+ */
+void _exit_(char **command)
+{
+	int status = 0, i;
+
+	free_list_env();
+	for (i = 0; command[i]; i++)
+		;
+	if (i == 1)
+	{
+		free(command[0]);
+		free(command);
+		exit(status);
+	}
+	else
+	{
+		status = _atoi(command[1]);
+		if (status <= -1)
+			status = 2;
+
+		free(command[0]);
+		free(command);
+		exit(status);
+	}
 }

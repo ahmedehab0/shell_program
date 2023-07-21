@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * main - simple shell program
  * @ac: num of arguments
@@ -11,7 +12,8 @@ int main(int ac __attribute__((unused)), char **av,
 {
 	ssize_t nread;
 	size_t n;
-	char **arg, *lineptr, *shell_name = av[0];
+	char **arg, *lineptr;
+	char *shell_name = av[0];
 	char *delim = " \n\t";
 
 	env_head = NULL;
