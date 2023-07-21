@@ -8,8 +8,8 @@
  */
 void _perror(char *command, char *shell_name)
 {
-	_puts(shell_name, 1);
-	_puts(": 1: ", 1);
-	_puts(command, 1);
-       _puts(": not found", 1);
+	_puts(shell_name, 2);
+	_puts(": 1: ", 2);
+	_puts(command, 2);
+       _puts(": not found", 2);
 }

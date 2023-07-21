@@ -17,9 +17,9 @@ void execute(char **command, char *shell_name)
 		if (command_path)
 		{
 			actual_command = command_path;
-			child = fork();
 		}
 		/* TODO: fork must not be called if the command doesn’t exist */
+		child = fork();
 		if (child < 0)
 		{
 			perror("Error");
