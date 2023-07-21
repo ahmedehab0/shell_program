@@ -6,7 +6,6 @@
 void exitt(char **command)
 {
 	int status = 0, i;
-	char *error_massage = "$: exit doesn't take more than one argument\n";
 
 	free_list_env();
 	for (i = 0; command[i]; i++)
@@ -17,7 +16,7 @@ void exitt(char **command)
 		free(command);
 		exit(status);
 	}
-	else if (i == 2)
+	else
 	{
 		status = _atoi(command[1]);
 		if (status <= -1)
@@ -26,10 +25,6 @@ void exitt(char **command)
                 free(command[0]);
 		free(command);
 		exit(status);
-	}
-	else
-	{
-		write(2, error_massage, _strlen(error_massage));
 	}
 }
 /**
