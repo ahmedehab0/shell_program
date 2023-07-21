@@ -5,7 +5,7 @@
  */
 void _cd(char **command)
 {
-	char *cwd = NULL;
+	char cwd[256];
 	int value;
 
 	if (!command[1])
@@ -32,7 +32,6 @@ void _cd(char **command)
 	set_env("OLDPWD", _getenv("PWD"), 1);
 	set_env("PWD", cwd, 1);
 
-	free(cwd);
 }
 /**
  *_strcmp - function to compare two strings

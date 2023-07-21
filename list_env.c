@@ -18,8 +18,8 @@ list_env *add_env_end(char *str)
 		return (NULL);
 
 	split_array = string_parse(str, delim);
-	new_node->name = strdup(split_array[0]);
-	new_node->value = strdup(split_array[1]);
+	new_node->name = _strdup(split_array[0]);
+	new_node->value = _strdup(split_array[1]);
 	new_node->next_env = NULL;
 
 	free(split_array);
