@@ -7,7 +7,7 @@ void execute(char **command, char *shell_name)
 {
 	char *actual_command = command[0];
 	char *command_path = NULL;
-	pid_t child;
+	pid_t child = 0;
 	int status, check_build;
 
 	check_build = built_in_handler(command);
@@ -17,9 +17,9 @@ void execute(char **command, char *shell_name)
 		if (command_path)
 		{
 			actual_command = command_path;
+			child = fork();
 		}
 		/* TODO: fork must not be called if the command doesn’t exist */
-		child = fork();
 		if (child < 0)
 		{
 			perror("Error");
@@ -33,7 +33,6 @@ void execute(char **command, char *shell_name)
 			if (execve(actual_command, command, NULL) == -1)
 			{
 				_perror(actual_command, shell_name);
-				exit(errno);
 			}
 		}
 		else
