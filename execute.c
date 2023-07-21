@@ -60,14 +60,14 @@ int built_in_handler(char **builtin)
 		{"unsetenv", _unsetenv}
 	};
 
-	if (strcmp(builtin[0], _env) == 0)
+	if (_strcmp(builtin[0], _env) == 0)
 	{
 		_printenv();
 		return (1);
 	}
 	for (i = 0; i < builtIntSize; i++)
 	{
-		if (strcmp(check_built[i].name, builtin[0]) == 0)
+		if (_strcmp(check_built[i].name, builtin[0]) == 0)
 		{
 			check_built[i].func(builtin);
 			return (1);
