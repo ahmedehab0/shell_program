@@ -20,7 +20,7 @@ char **string_parse(char *str, char *delim, int num_token)
 	token[i] = strtok(str, delim);
 	if (num_token == 1)
 	{
-		token[++i] = strtok(NULL, delim);
+		token[++i] = strtok(NULL, "\0");
 		return (token);
 	}
 
