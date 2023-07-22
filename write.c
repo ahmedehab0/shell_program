@@ -36,7 +36,7 @@ void _perror(char *command, char *shell_name)
 void _isatty(void)
 {
 	if (isatty(STDIN_FILENO))
-		_puts("($) ", STDIN_FILENO);
+		_puts("($) ", STDOUT_FILENO);
 }
 
 /**
@@ -48,6 +48,6 @@ void sig_handler(int sig)
 	if (sig == SIGINT)
 	{
 		free_list_env();
-		_puts("\n($) ", STDIN_FILENO);
+		_puts("\n($) ", STDOUT_FILENO);
 	}
 }
