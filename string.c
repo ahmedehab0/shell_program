@@ -8,19 +8,25 @@
  */
 int _atoi(const char *s)
 {
-	int i, sign = 1, result = 0;
+	int i = 0;
+	int sign = 1;
+	int result = 0;
 
-	for (i = 0; s[i]; i++)
+	if (s[i] == '-')
 	{
-		if (s[i] == '-')
-			sign *= -1;
+		sign *= -1;
+		i = 1;
+	}
 
+	for (; s[i]; i++)
+	{
 		if (s[i] >= '0' && s[i] <= '9')
 		{
 			result *= 10;
 			result += (s[i] - '0');
 		}
 	}
+
 	return (sign * result);
 }
 
@@ -60,6 +66,7 @@ int _strcmp(const char *s1, const char *s2)
 		if (s1[i] != s2[i])
 			return (s1[i] - s2[i]);
 	}
+
 	return (s1[i] - s2[i]);
 }
 

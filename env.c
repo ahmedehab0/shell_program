@@ -67,6 +67,7 @@ int set_env(const char *name, const char *value, int overwrite)
 		prev = p;
 		p = p->next_env;
 	}
+
 	p = malloc(sizeof(list_env));
 	if (p == NULL)
 		return (-1);
@@ -75,6 +76,7 @@ int set_env(const char *name, const char *value, int overwrite)
 	p->value = _strdup(value);
 	p->next_env = NULL;
 	prev->next_env = p;
+
 	return (0);
 }
 
@@ -113,6 +115,6 @@ int unset_env(const char *name)
 		prev = current;
 		current = current->next_env;
 	}
-	/* when to return (-1) ? */
+
 	return (0);
 }

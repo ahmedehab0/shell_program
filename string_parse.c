@@ -10,13 +10,12 @@
 char **string_parse(char *str, char *delim)
 {
 	char **token;
-	int i = 0, buf_size = 1024;
+	int i = 0;
+	int buf_size = 1024;
 
 	token = malloc(sizeof(char *) * buf_size);
 	if (!token)
-	{
 		return (NULL);
-	}
 
 	token[i] = strtok(str, delim);
 
@@ -28,9 +27,7 @@ char **string_parse(char *str, char *delim)
 			buf_size += buf_size;
 			token = _realloc(token, sizeof(char *) * buf_size);
 			if (!token)
-			{
 				perror("Error");
-			}
 		}
 	}
 	return (token);

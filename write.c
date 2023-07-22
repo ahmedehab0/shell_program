@@ -3,7 +3,8 @@
 /**
  * _puts - function to print a string to stream
  * @str: string to be printed
- * @stream: stream
+ * @stream: file stream
+ *
  * Return: number of chars printed
  */
 int _puts(char *str, int stream)
@@ -11,9 +12,8 @@ int _puts(char *str, int stream)
 	int i;
 
 	for (i = 0; str[i]; i++)
-	{
 		write(stream, &str[i], 1);
-	}
+
 	return ((i + 1));
 }
 
@@ -24,10 +24,10 @@ int _puts(char *str, int stream)
  */
 void _perror(char *command, char *shell_name)
 {
-	_puts(shell_name, 2);
-	_puts(": 1: ", 2);
-	_puts(command, 2);
-	_puts(": not found\n", 2);
+	_puts(shell_name, STDERR_FILENO);
+	_puts(": 1: ", STDERR_FILENO);
+	_puts(command, STDERR_FILENO);
+	_puts(": not found\n", STDERR_FILENO);
 }
 
 /**
@@ -36,7 +36,7 @@ void _perror(char *command, char *shell_name)
 void _isatty(void)
 {
 	if (isatty(STDIN_FILENO))
-		_puts("($) ", 1);
+		_puts("($) ", STDIN_FILENO);
 }
 
 /**
@@ -48,6 +48,6 @@ void sig_handler(int sig)
 	if (sig == SIGINT)
 	{
 		free_list_env();
-		_puts("\n#cisfun$ ", 1);
+		_puts("\n($) ", STDIN_FILENO);
 	}
 }

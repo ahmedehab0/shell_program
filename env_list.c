@@ -28,6 +28,7 @@ list_env *add_env_end(char *str)
 		env_head = new_node;
 		return (env_head);
 	}
+
 	p = env_head;
 	while (p->next_env != NULL)
 		p = p->next_env;
@@ -43,10 +44,10 @@ list_env *add_env_end(char *str)
  */
 list_env *list_environment(void)
 {
+	list_env *new_node;
 	char *buff;
 	int letters;
 	int i = 0;
-	list_env *new_node;
 
 	while (environ[i])
 	{
@@ -105,8 +106,8 @@ void _printenv(void)
 		temp = str_concat(p->name, "=");
 		buff = str_concat(temp, p->value);
 		free(temp);
-		_puts(buff, 1);
-		_puts("\n", 1);
+		_puts(buff, STDIN_FILENO);
+		_puts("\n", STDIN_FILENO);
 		free(buff);
 		p = p->next_env;
 	}
