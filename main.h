@@ -94,7 +94,7 @@ int unset_env(const char *name);
 
 /* ------------------< functions in string_parse.c >------------------------ */
 
-char **string_parse(char *str, char *delim);
+char **string_parse(char *str, char *delim, int num_token);
 void *_realloc(void *ptr, int new_size);
 
 /* ----------------< functions in string.c >-------------------------------- */

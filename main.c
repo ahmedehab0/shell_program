@@ -33,7 +33,7 @@ int main(int ac __attribute__((unused)), char **av,
 			exit(EXIT_SUCCESS);
 		}
 
-		arg = string_parse(line_ptr, delim);
+		arg = string_parse(line_ptr, delim, 0);
 		if (_strcmp(arg[0], "") == 0)
 		{
 			free(line_ptr);

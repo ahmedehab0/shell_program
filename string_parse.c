@@ -7,7 +7,7 @@
  *
  * Return: array of strings
  */
-char **string_parse(char *str, char *delim)
+char **string_parse(char *str, char *delim, int num_token)
 {
 	char **token;
 	int i = 0;
@@ -22,6 +22,8 @@ char **string_parse(char *str, char *delim)
 	while (token[i])
 	{
 		token[++i] = strtok(NULL, delim);
+		if (num_token == 1)
+			break;
 		if (i >= buf_size)
 		{
 			buf_size += buf_size;

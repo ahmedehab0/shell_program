@@ -17,7 +17,7 @@ list_env *add_env_end(char *str)
 	if (new_node == NULL)
 		return (NULL);
 
-	split_array = string_parse(str, delim);
+	split_array = string_parse(str, delim, 1);
 	new_node->name = _strdup(split_array[0]);
 	new_node->value = _strdup(split_array[1]);
 	new_node->next_env = NULL;
@@ -106,8 +106,8 @@ void _printenv(void)
 		temp = str_concat(p->name, "=");
 		buff = str_concat(temp, p->value);
 		free(temp);
-		_puts(buff, STDIN_FILENO);
-		_puts("\n", STDIN_FILENO);
+		_puts(buff, STDOUT_FILENO);
+		_puts("\n", STDOUT_FILENO);
 		free(buff);
 		p = p->next_env;
 	}
