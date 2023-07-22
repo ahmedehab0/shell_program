@@ -61,7 +61,7 @@ void execute(char **command, char *shell_name)
 		{
 			/* TODO: execve will be the core part of your Shell, */
 			/* TODO: don’t forget to pass the environ to it… */
-			if (execve(actual_command, command, NULL) == -1)
+			if (execve(actual_command, command, environ) == -1)
 			{
 				_perror(actual_command, shell_name);
 			}
