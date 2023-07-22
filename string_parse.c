@@ -18,12 +18,16 @@ char **string_parse(char *str, char *delim, int num_token)
 		return (NULL);
 
 	token[i] = strtok(str, delim);
+	if (num_token == 1)
+	{
+		token[++i] = strtok(NULL, delim);
+		return (token);
+	}
 
 	while (token[i])
 	{
 		token[++i] = strtok(NULL, delim);
-		if (num_token == 1)
-			break;
+
 		if (i >= buf_size)
 		{
 			buf_size += buf_size;
