@@ -27,6 +27,7 @@ void _perror(char *command, char *shell_name)
 	_puts(shell_name, STDERR_FILENO);
 	_puts(": 1: ", STDERR_FILENO);
 	_puts(command, STDERR_FILENO);
+	/* _puts(": not found/n", STDERR_FILENO); */
 	_puts(": not found", STDERR_FILENO);
 }
 
