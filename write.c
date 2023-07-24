@@ -24,7 +24,6 @@ int _puts(char *str, int stream)
  */
 void _perror(char *command, char *shell_name)
 {
-	exit_status = 2;
 	_puts(shell_name, STDERR_FILENO);
 	_puts(": 1: ", STDERR_FILENO);
 	_puts(command, STDERR_FILENO);
