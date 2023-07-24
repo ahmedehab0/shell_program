@@ -58,11 +58,16 @@ void execute(char **command, char *shell_name)
 		}
 		else if (child == 0)
 		{
-			if (execve(actual_command, command, environ) == -1)
+			if (access(actual_command, R_OK) != 0)
 			{
 				_perror(actual_command, shell_name);
 				exit_status = 127;
-				/*exit(127);*/
+				return;
+			}
+			if (execve(actual_command, command, environ) == -1)
+			{
+				exit_status = 2;
+				return;
 			}
 		}
 		else
