@@ -47,7 +47,7 @@ void _unsetenv(char **command);
 /* -------------------< functions in execute.c >---------------------------- */
 
 int built_in_handler(char **builtin);
-void execute(char **command, char *shell_name);
+void execute(char **command, char *shell_name, char *envp[]);
 char *_which(char *file_name);
 
 /* -------------------< functions in write.c >------------------------------ */

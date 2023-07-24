@@ -9,7 +9,7 @@
  * Return: 0
  */
 int main(int ac __attribute__((unused)), char **av,
-		 char *envp[] __attribute__((unused)))
+		 char *envp[])
 {
 	char **arg, *line_ptr;
 	char *shell_name = av[0];
@@ -41,7 +41,7 @@ int main(int ac __attribute__((unused)), char **av,
 			free(arg);
 			continue;
 		}
-		execute(arg, shell_name);
+		execute(arg, shell_name, envp);
 		free(line_ptr);
 		free(arg);
 	}
