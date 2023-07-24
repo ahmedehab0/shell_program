@@ -23,6 +23,11 @@ int main(int ac __attribute__((unused)), char **av,
 	while (envp[i])
 		printf("%s\n", envp[i++]);
 
+	printf("environ\n");
+	i = 0;
+	while (environ[i])
+		printf("%s\n", environ[i++]);
+
 	signal(SIGINT, sig_handler);
 
 	while (1)
