@@ -33,6 +33,7 @@ int built_in_handler(char **builtin)
  * execute - function to execute the commands
  * @command: the command that should be executed
  * @shell_name: shell name
+ * @envp: array of environments
  */
 void execute(char **command, char *shell_name, char *envp[])
 {
@@ -55,7 +56,6 @@ void execute(char **command, char *shell_name, char *envp[])
 		{
 			perror("Error");
 			exit(errno);
-
 		}
 		else if (child == 0)
 		{

@@ -13,8 +13,7 @@
 #include <stddef.h>
 #include <sys/stat.h>
 
-int exit_status;
-char *shell_name;
+
 /**
  *struct list_path- linked list containing path directories.
  *@dir: name of the directory.
@@ -39,6 +38,8 @@ typedef struct built_in
 
 /* -----------------< functions in built_in.c>------------------------------ */
 
+int exit_status;
+char *shell_name;
 void _cd(char **command);
 void _env(__attribute__((unused)) char **command);
 void _exit_(char **command);
@@ -55,6 +56,7 @@ char *_which(char *file_name);
 
 int _puts(char *str, int stream);
 void _perror(char *command, char *shell_name, char *str);
+void _perror_cd(char **command);
 void _isatty(void);
 void sig_handler(int sig);
 int _isalpha(int c);
