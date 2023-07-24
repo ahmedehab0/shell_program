@@ -14,6 +14,7 @@
 #include <sys/stat.h>
 
 int exit_status;
+char *shell_name;
 /**
  *struct list_path- linked list containing path directories.
  *@dir: name of the directory.
@@ -53,7 +54,7 @@ char *_which(char *file_name);
 /* -------------------< functions in write.c >------------------------------ */
 
 int _puts(char *str, int stream);
-void _perror(char *command, char *shell_name);
+void _perror(char *command, char *shell_name, char *str);
 void _isatty(void);
 void sig_handler(int sig);
 

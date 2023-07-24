@@ -22,12 +22,12 @@ int _puts(char *str, int stream)
  * @command: name of the command
  * @shell_name: name of the program
  */
-void _perror(char *command, char *shell_name)
+void _perror(char *command, char *shell_name, char *str)
 {
 	_puts(shell_name, STDERR_FILENO);
 	_puts(": 1: ", STDERR_FILENO);
 	_puts(command, STDERR_FILENO);
-	_puts(": not found\n", STDERR_FILENO);
+	_puts(str, STDERR_FILENO);
 }
 
 /**

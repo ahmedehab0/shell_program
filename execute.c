@@ -61,10 +61,14 @@ void execute(char **command, char *shell_name, char *envp[])
 		{
 			if (access(actual_command, R_OK) != 0)
 			{
-				_perror(actual_command, shell_name);
+				_perror(actual_command, shell_name, ": not found\n");
 				exit_status = 127;
 				return;
 			}
+			else
+
+				exit_status = 0;
+
 			exit_status = execve(actual_command, command, envp);
 		}
 		else
