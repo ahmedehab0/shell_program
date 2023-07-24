@@ -30,7 +30,7 @@ int main(int ac __attribute__((unused)), char **av,
 			free_list_env();
 			free(line_ptr);
 			/* _puts("  \n", STDOUT_FILENO); */
-			_puts("\n", STDOUT_FILENO);
+			/* _puts("\n", STDOUT_FILENO); */
 			exit(EXIT_SUCCESS);
 		}
 
