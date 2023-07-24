@@ -31,21 +31,6 @@ void _perror(char *command, char *shell_name)
 }
 
 /**
- * _perror_exit - handles the error massage if the command for exit
- * @command: name of the command
- */
-void _perror_exit(char **command)
-{
-	_puts(shell_Name, STDERR_FILENO);
-	_puts(": 1: ", STDERR_FILENO);
-	_puts(command[0], STDERR_FILENO);
-	_puts(": Illegal number: ", STDERR_FILENO);
-	_puts(command[1], STDERR_FILENO);
-	_puts("\n", STDERR_FILENO);
-
-}
-
-/**
  * _isatty - determine whether a fd refers to a terminal or not
  */
 void _isatty(void)
