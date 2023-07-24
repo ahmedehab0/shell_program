@@ -77,7 +77,10 @@ void _unsetenv(char **command)
  */
 void _exit_(char **command)
 {
-	int status = 0, i;
+	int i;
+
+	if (exit_status != 127)
+		exit_status = 0;
 
 	free_list_env();
 	for (i = 0; command[i]; i++)
@@ -86,16 +89,16 @@ void _exit_(char **command)
 	{
 		free(command[0]);
 		free(command);
-		exit(status);
+		exit(exit_status);
 	}
 	else
 	{
-		status = _atoi(command[1]);
-		if (status <= -1)
-			status = 2;
+		exit_status = _atoi(command[1]);
+		if (exit_status <= -1)
+			exit_status = 2;
 
 		free(command[0]);
 		free(command);
-		exit(status);
+		exit(exit_status);
 	}
 }

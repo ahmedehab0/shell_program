@@ -50,7 +50,6 @@ void execute(char **command, char *shell_name)
 			actual_command = command_path;
 			child = fork();
 		}
-		/* TODO: fork must not be called if the command doesn’t exist */
 		if (child < 0)
 		{
 			perror("Error");
@@ -59,11 +58,11 @@ void execute(char **command, char *shell_name)
 		}
 		else if (child == 0)
 		{
-			/* TODO: execve will be the core part of your Shell, */
-			/* TODO: don’t forget to pass the environ to it… */
 			if (execve(actual_command, command, environ) == -1)
 			{
 				_perror(actual_command, shell_name);
+				exit_status = 127;
+				/*exit(127);*/
 			}
 		}
 		else

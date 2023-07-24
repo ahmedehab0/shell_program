@@ -13,6 +13,7 @@
 #include <stddef.h>
 #include <sys/stat.h>
 
+int exit_status;
 /**
  *struct list_path- linked list containing path directories.
  *@dir: name of the directory.
