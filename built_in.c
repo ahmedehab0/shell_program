@@ -79,9 +79,12 @@ void _exit_(char **command)
 {
 	int i;
 
-	if (exit_status != 127 && exit_status != 2)
+	if (exit_status != 127 && exit_status != -1)
 		exit_status = 0;
 
+	if (exit_status == -1)
+		exit_status = 2;
+	
 	free_list_env();
 	for (i = 0; command[i]; i++)
 		;
