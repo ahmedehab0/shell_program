@@ -34,7 +34,7 @@ int built_in_handler(char **builtin)
  * @command: the command that should be executed
  * @shell_name: shell name
  */
-void execute(char **command, char *shell_name)
+void execute(char **command, char *shell_name, char *envp[])
 {
 	char *actual_command = command[0];
 	char *command_path = NULL;
@@ -64,7 +64,7 @@ void execute(char **command, char *shell_name)
 				exit_status = 127;
 				return;
 			}
-			if (execve(actual_command, command, environ) == -1)
+			if (execve(actual_command, command, envp) == -1)
 			{
 				exit_status = 2;
 				return;
