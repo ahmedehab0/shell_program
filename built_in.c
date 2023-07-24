@@ -95,10 +95,7 @@ void _exit_(char **command)
 	{
 		exit_status = _atoi(command[1]);
 		if (exit_status <= -1)
-		{
 			exit_status = 2;
-			perror("Error");
-		}
 
 		free(command[0]);
 		free(command);
