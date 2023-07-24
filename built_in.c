@@ -97,7 +97,12 @@ void _exit_(char **command)
 		if (exit_status <= -1)
 		{
 			exit_status = 2;
-			perror("Error");
+			_puts(command[0], STDERR_FILENO);
+			_puts(": 1: ", STDERR_FILENO);
+			_puts(command[0], STDERR_FILENO);
+			_puts(": Illegal number: ", STDERR_FILENO);
+			_puts(command[1], STDERR_FILENO);
+			_puts("\n", STDERR_FILENO);
 		}
 
 		free(command[0]);
