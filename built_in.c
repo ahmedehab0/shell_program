@@ -85,7 +85,7 @@ void _exit_(char **command)
 	free_list_env();
 	for (i = 0; command[i]; i++)
 		;
-	if (i == 1)
+	if (i == 0)
 	{
 		free(command[0]);
 		free(command);
@@ -96,7 +96,7 @@ void _exit_(char **command)
 		exit_status = _atoi(command[1]);
 		if (exit_status <= -1)
 			exit_status = 2;
-
+		_perror_exit(command);
 		free(command[0]);
 		free(command);
 		exit(exit_status);

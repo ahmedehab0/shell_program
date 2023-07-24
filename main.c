@@ -12,11 +12,11 @@ int main(int ac __attribute__((unused)), char **av,
 		 char *envp[])
 {
 	char **arg, *line_ptr;
-	char *shell_name = av[0];
 	char *delim = " \n\t";
 	ssize_t char_read;
 	size_t n = 0;
 
+	shell_Name = av[0];
 	env_head = list_environment(envp);
 	signal(SIGINT, sig_handler);
 
@@ -39,7 +39,7 @@ int main(int ac __attribute__((unused)), char **av,
 			free(arg);
 			continue;
 		}
-		execute(arg, shell_name, envp);
+		execute(arg, shell_Name, envp);
 		free(line_ptr);
 		free(arg);
 	}
