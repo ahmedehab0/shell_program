@@ -83,7 +83,7 @@ typedef struct list_env
 list_env *env_head;
 
 list_env *add_env_end(char *str);
-list_env *list_environment(void);
+list_env *list_environment(char *envp[]);
 void free_list_env(void);
 void _printenv(void);
 

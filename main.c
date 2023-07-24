@@ -17,7 +17,7 @@ int main(int ac __attribute__((unused)), char **av,
 	ssize_t char_read;
 	size_t n = 0;
 
-	env_head = NULL;
+	env_head = list_environment(envp);
 	signal(SIGINT, sig_handler);
 
 	while (1)

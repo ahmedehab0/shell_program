@@ -12,8 +12,6 @@ char *_getenv(const char *var_name)
 	list_env *p;
 
 	if (env_head == NULL)
-		env_head = list_environment();
-	if (env_head == NULL)
 		return (NULL);
 
 	p = env_head;
@@ -47,8 +45,6 @@ int set_env(const char *name, const char *value, int overwrite)
 {
 	list_env *p, *prev;
 
-	if (env_head == NULL)
-		env_head = list_environment();
 	if (env_head == NULL)
 		return (-1);
 
@@ -94,8 +90,6 @@ int unset_env(const char *name)
 {
 	list_env *prev, *current;
 
-	if (env_head == NULL)
-		env_head = list_environment();
 	if (env_head == NULL)
 		return (-1);
 

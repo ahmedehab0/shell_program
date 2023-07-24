@@ -42,17 +42,17 @@ list_env *add_env_end(char *str)
  *
  * Return: a list of environment
  */
-list_env *list_environment(void)
+list_env *list_environment(char *envp[])
 {
 	list_env *new_node;
 	char *buff;
 	int letters;
 	int i = 0;
 
-	while (environ[i])
+	while (envp[i])
 	{
-		letters = _strlen(environ[i]);
-		buff = _strdup(environ[i]);
+		letters = _strlen(envp[i]);
+		buff = _strdup(envp[i]);
 		buff[letters] = '\0';
 		new_node = add_env_end(buff);
 		free(buff);
@@ -72,9 +72,6 @@ list_env *list_environment(void)
 void free_list_env(void)
 {
 	list_env *current_node;
-
-	if (env_head == NULL)
-		return;
 
 	current_node = env_head;
 	while (current_node != NULL)
@@ -96,9 +93,6 @@ void _printenv(void)
 {
 	char *buff, *temp;
 	list_env *p;
-
-	if (env_head == NULL)
-		env_head = list_environment();
 
 	p = env_head;
 	while (p)
