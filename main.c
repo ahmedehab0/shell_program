@@ -16,13 +16,8 @@ int main(int ac __attribute__((unused)), char **av,
 	char *delim = " \n\t";
 	ssize_t char_read;
 	size_t n = 0;
-	int i;
 
 	env_head = list_environment(envp);
-	i = 0;
-	while (envp[i])
-		printf("%s\n", envp[i++]);
-
 	signal(SIGINT, sig_handler);
 
 	while (1)
@@ -34,6 +29,9 @@ int main(int ac __attribute__((unused)), char **av,
 		{
 			free_list_env();
 			free(line_ptr);
+			if (exit_status == -1)
+				exit_status = 2;
+
 			exit(exit_status);
 		}
 
