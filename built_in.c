@@ -95,7 +95,15 @@ void _exit_(char **command)
 	{
 		exit_status = _atoi(command[1]);
 		if (exit_status <= -1)
+		{
 			exit_status = 2;
+			_puts(command[0], STDERR_FILENO);
+			_puts(": 1: ", STDERR_FILENO);
+			_puts(command[0], STDERR_FILENO);
+			_puts(": Illegal number: ", STDERR_FILENO);
+			_puts(command[1], STDERR_FILENO);
+			_puts("\n", STDERR_FILENO);
+		}
 
 		free(command[0]);
 		free(command);
