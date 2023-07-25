@@ -41,7 +41,6 @@ void execute(char **command, char *shell_name, char *envp[])
 	char *command_path = NULL;
 	pid_t child = 0;
 	int status, check_build;
-	(void) envp;
 
 	check_build = built_in_handler(command);
 	if (!check_build)
@@ -65,14 +64,15 @@ void execute(char **command, char *shell_name, char *envp[])
 				exit_status = 127;
 				return;
 			}
-			else
-
-				exit_status = 0;
-
-			exit_status = execve(actual_command, command, envp);
+			if (execve(actual_command, command, envp) == -1)
+				perror("ERor");
 		}
 		else
+		{
+			exit_status = 2;
 			wait(&status);
+		}
+
 	}
 	free(command_path);
 }

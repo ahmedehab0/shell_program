@@ -87,7 +87,7 @@ void _exit_(char **command)
 {
 	int i;
 
-	if (exit_status != 127 && exit_status != -1)
+	if (exit_status != 127 && exit_status != 2)
 		exit_status = 0;
 
 	if (exit_status == -1)
