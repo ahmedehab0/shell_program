@@ -41,7 +41,7 @@ void execute(char **command, char *shell_name, char *envp[])
 	char *command_path = NULL;
 	pid_t child = 0;
 	int status, check_build;
-	//(void) envp;
+	/* (void) envp; */
 
 	check_build = built_in_handler(command);
 	if (!check_build)
