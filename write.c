@@ -20,9 +20,9 @@ int _puts(char *str, int stream)
 /**
  * _perror - handles the error massage if the command is not found
  * @command: name of the command
- * @shell_name: name of the program
+ * @str: a string pointer
  */
-void _perror(char *command, char *shell_name, char *str)
+void _perror(char *command, char *str)
 {
 	_puts(shell_name, STDERR_FILENO);
 	_puts(": 1: ", STDERR_FILENO);
@@ -72,7 +72,10 @@ void sig_handler(int sig)
  *
  * Return: 1 if c is a letter, 0 otherwise
  */
-int _isalpha(int c)
+
+/* int _isalpha(int c)
 {
 	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
+*/
+

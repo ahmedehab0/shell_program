@@ -29,7 +29,7 @@ int main(int ac __attribute__((unused)), char **av,
 		{
 			free_list_env();
 			free(line_ptr);
-		
+
 			if (exit_status == -1)
 				exit_status = 2;
 			exit(exit_status);
@@ -42,7 +42,7 @@ int main(int ac __attribute__((unused)), char **av,
 			free(arg);
 			continue;
 		}
-		execute(arg, shell_name, envp);
+		execute(arg, envp);
 		free(line_ptr);
 		free(arg);
 	}

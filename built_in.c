@@ -92,7 +92,7 @@ void _exit_(char **command)
 
 	if (exit_status == -1)
 		exit_status = 2;
-	
+
 	free_list_env();
 	for (i = 0; command[i]; i++)
 		;
@@ -108,7 +108,7 @@ void _exit_(char **command)
 		if (exit_status < 0)
 		{
 			exit_status = 2;
-			_perror("exit", shell_name, ": Illegal number: ");
+			_perror("exit", ": Illegal number: ");
 			_puts(command[1], STDERR_FILENO);
 			_puts("\n", STDERR_FILENO);
 			return;

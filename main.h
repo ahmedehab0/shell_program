@@ -49,17 +49,17 @@ void _unsetenv(char **command);
 /* -------------------< functions in execute.c >---------------------------- */
 
 int built_in_handler(char **builtin);
-void execute(char **command, char *shell_name, char *envp[]);
+void execute(char **command, char *envp[]);
 char *_which(char *file_name);
 
 /* -------------------< functions in write.c >------------------------------ */
 
 int _puts(char *str, int stream);
-void _perror(char *command, char *shell_name, char *str);
+void _perror(char *command, char *str);
 void _perror_cd(char **command);
 void _isatty(void);
 void sig_handler(int sig);
-int _isalpha(int c);
+/* int _isalpha(int c); */
 
 /* -------------------< functions in directories_list.c >------------------- */
 

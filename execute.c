@@ -32,10 +32,9 @@ int built_in_handler(char **builtin)
 /**
  * execute - function to execute the commands
  * @command: the command that should be executed
- * @shell_name: shell name
  * @envp: array of environments
  */
-void execute(char **command, char *shell_name, char *envp[])
+void execute(char **command, char *envp[])
 {
 	char *actual_command = command[0];
 	char *command_path = NULL;
@@ -60,7 +59,7 @@ void execute(char **command, char *shell_name, char *envp[])
 		{
 			if (access(actual_command, R_OK) != 0)
 			{
-				_perror(actual_command, shell_name, ": not found\n");
+				_perror(actual_command, ": not found\n");
 				exit_status = 127;
 				return;
 			}
