@@ -39,6 +39,7 @@ list_env *add_env_end(char *str)
 
 /**
  * list_environment - make a linked list od environment
+ * @envp: array of environments
  *
  * Return: a list of environment
  */

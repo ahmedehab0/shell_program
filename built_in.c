@@ -7,28 +7,36 @@
 void _cd(char **command)
 {
 	char cwd[256];
+	char *old_pwd;
 	int value;
 
-	if (!command[1])
-		value = chdir(_getenv("HOME"));
+	old_pwd = _getenv("OLDPWD");
+	if (old_pwd == NULL)
+		old_pwd = _getenv("PWD");
 
-	else if (!_strcmp("-", command[1]))
+	if (command[1] == NULL)
 	{
-		value = chdir(_getenv("OLDPWD"));
-		if (value == -1)
-		{
-			perror("OLDPWD");
+		if (!_getenv("HOME"))
 			return;
-		}
+		value = chdir(_getenv("HOME"));
+	}
+	else if (_strcmp("-", command[1]) == 0)
+	{
+		_puts(old_pwd, STDOUT_FILENO);
+		_puts("\n", STDOUT_FILENO);
+		value = chdir(old_pwd);
+		if (value == -1)
+			return;
 	}
 	else
 		value = chdir(command[1]);
 
 	if (value == -1)
 	{
-		perror("PWD");
+		_perror_cd(command);
 		return;
 	}
+
 	getcwd(cwd, sizeof(cwd));
 	set_env("OLDPWD", _getenv("PWD"), 1);
 	set_env("PWD", cwd, 1);

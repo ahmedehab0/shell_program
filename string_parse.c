@@ -4,6 +4,7 @@
  * string_parse - function to tokenize the string
  * @str: string to be tokenized
  * @delim: delimiter
+ * @num_token: number of tokens
  *
  * Return: array of strings
  */

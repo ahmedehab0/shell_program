@@ -31,6 +31,20 @@ void _perror(char *command, char *shell_name, char *str)
 }
 
 /**
+ * _perror_cd - handles error massage for cd command
+ * @command: cd arguments
+ */
+void _perror_cd(char **command)
+{
+	_puts(shell_name, STDERR_FILENO);
+	_puts(": 1: ", STDERR_FILENO);
+	_puts(command[0], STDERR_FILENO);
+	_puts(": can't cd to ", STDERR_FILENO);
+	_puts(command[1], STDERR_FILENO);
+	_puts("\n", STDERR_FILENO);
+}
+
+/**
  * _isatty - determine whether a fd refers to a terminal or not
  */
 void _isatty(void)
