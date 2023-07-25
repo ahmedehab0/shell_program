@@ -69,7 +69,6 @@ void execute(char **command, char *shell_name, char *envp[])
 		}
 		else
 		{
-			exit_status = 2;
 			wait(&status);
 		}
 
