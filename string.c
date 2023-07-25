@@ -25,6 +25,8 @@ int _atoi(const char *s)
 			result *= 10;
 			result += (s[i] - '0');
 		}
+		else
+			return (-1);
 	}
 
 	return (sign * result);
