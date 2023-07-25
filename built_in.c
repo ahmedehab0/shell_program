@@ -99,11 +99,11 @@ void _exit_(char **command)
 		exit_status = _atoi(command[1]);
 		if (exit_status < 0)
 		{
-
 			exit_status = 2;
 			_perror("exit", shell_name, ": Illegal number: ");
 			_puts(command[1], STDERR_FILENO);
 			_puts("\n", STDERR_FILENO);
+			return;
 		}
 
 		free(command[0]);

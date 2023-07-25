@@ -57,6 +57,7 @@ int _puts(char *str, int stream);
 void _perror(char *command, char *shell_name, char *str);
 void _isatty(void);
 void sig_handler(int sig);
+int _isalpha(int c);
 
 /* -------------------< functions in directories_list.c >------------------- */
 
