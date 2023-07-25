@@ -59,7 +59,6 @@ void _perror(char *command, char *str);
 void _perror_cd(char **command);
 void _isatty(void);
 void sig_handler(int sig);
-/* int _isalpha(int c); */
 
 /* -------------------< functions in directories_list.c >------------------- */
 
