@@ -59,6 +59,9 @@ void _setenv(char **command)
 {
 	int status;
 
+	if (command[2] == NULL)
+		return;
+
 	status = set_env(command[1], command[2], 1);
 
 	if (status == -1)
@@ -72,6 +75,9 @@ void _setenv(char **command)
 void _unsetenv(char **command)
 {
 	int status;
+
+	if (command[1] == NULL)
+		return;
 
 	status = unset_env(command[1]);
 
