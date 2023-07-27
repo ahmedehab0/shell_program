@@ -38,8 +38,8 @@ typedef struct built_in
 
 /* -----------------< functions in built_in.c>------------------------------ */
 
-int exit_status;
-char *shell_name;
+extern int exit_status;
+extern char *shell_name;
 void _cd(char **command);
 void _env(__attribute__((unused)) char **command);
 void _exit_(char **command);
@@ -83,7 +83,7 @@ typedef struct list_env
 	struct list_env *next_env;
 } list_env;
 
-list_env *env_head;
+extern list_env *env_head;
 
 list_env *add_env_end(char *str);
 list_env *list_environment(char *envp[]);
