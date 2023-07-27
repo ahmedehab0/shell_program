@@ -1,5 +1,6 @@
 #include "main.h"
 
+list_env *env_head;
 /**
  * add_node_end - adds a new node at the end of a list_t list
  * @str: string element to store

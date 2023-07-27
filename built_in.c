@@ -1,5 +1,7 @@
 #include "main.h"
 
+int exit_status;
+char *shell_name;
 /**
  *_cd - change directory built in command
  *@command: parsed string
